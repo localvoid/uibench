@@ -13,6 +13,9 @@ gulp.task('html', function() {
 
 gulp.task('build', function(callback) {
   var myConfig = Object.create(webpackConfig);
+  myConfig.entry = [
+    './web/js/main.jsx'
+  ];
   myConfig.plugins = myConfig.plugins || [];
   myConfig.plugins = myConfig.plugins.concat(
       new webpack.DefinePlugin({
@@ -27,9 +30,9 @@ gulp.task('build', function(callback) {
   // run webpack
   webpack(myConfig, function(err, stats) {
     if (err) {
-      throw new gutil.PluginError('webpack:build', err);
+      throw new gutil.PluginError('build', err);
     }
-    gutil.log('[webpack:build]', stats.toString({
+    gutil.log('[build]', stats.toString({
       colors: true
     }));
     callback();
@@ -49,7 +52,7 @@ gulp.task('serve', function(callback) {
     }
   }).listen(8080, '0.0.0.0', function (err) {
     if (err) throw new gutil.PluginError('webpack-dev-server', err);
-    gutil.log('[webpack-dev-server]', 'http://localhost:8080/webpack-dev-server/index.html');
+    gutil.log('[serve]', 'http://localhost:8080/webpack-dev-server/index.html');
   });
 });
 
