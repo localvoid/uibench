@@ -1,0 +1,31 @@
+{
+  "private": true,
+  "name": "uibench",
+  "version": "0.1.0",
+  "description": "UI Benchmark",
+  "homepage": "https://github.com/localvoid/uibench",
+  "repository": "https://github.com/localvoid/uibench",
+  "author": {
+    "name": "Boris Kaul",
+    "email": "localvoid@gmail.com",
+    "url": "https://github.com/localvoid"
+  },
+  "keywords": [
+    "uibench",
+    "benchmark"
+  ],
+  "dependencies": {
+    "react": "~0.13.3",
+    "URIjs": "~1.16.0",
+    "d3": "~3.5.6"
+  },
+  "devDependencies": {
+    "babel-core": "~5.8.20",
+    "babel-loader": "~5.3.2",
+    "webpack-dev-server": "~1.10.1",
+    "webpack": "~1.10.5",
+    "gulp-util": "~3.0.6",
+    "gulp": "~3.9.0",
+    "gulp-gh-pages": "~0.5.2"
+  }
+}
