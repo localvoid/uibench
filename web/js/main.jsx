@@ -223,7 +223,7 @@ class ResultsTable extends React.Component {
         title += 'min: ' + Math.round(value.min * 1000).toString() + '\n';
         title += 'max: ' + Math.round(value.max * 1000).toString();
 
-        var percent = medianMin === value.median ? '' : '(' + (((value.median / medianMin) - 1) * 100).toFixed(2) + '%)';
+        var percent = medianMin === value.median ? null : (<small>{'(' + (((value.median / medianMin) - 1) * 100).toFixed(2) + '%)'}</small>);
 
         cols.push((
             <td key={report.name + '__' + report.version} title={title} style={style}>
