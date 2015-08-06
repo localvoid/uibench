@@ -205,8 +205,9 @@ class ResultsTable extends React.Component {
       });
 
       var medianValues = values.map(function(v) { return v.median; });
+      var medianMin = d3.min(medianValues);
 
-      var scale = d3.scale.linear().domain([d3.min(medianValues), d3.max(medianValues)]);
+      var scale = d3.scale.linear().domain([medianMin, d3.max(medianValues)]);
 
       for (var j = 0; j < reports.length; j++) {
         var report = reports[j];
@@ -222,9 +223,11 @@ class ResultsTable extends React.Component {
         title += 'min: ' + Math.round(value.min * 1000).toString() + '\n';
         title += 'max: ' + Math.round(value.max * 1000).toString();
 
+        var percent = medianMin === value.median ? '' : '(' + (((value.median / medianMin) - 1) * 100).toFixed(2) + '%)';
+
         cols.push((
             <td key={report.name + '__' + report.version} title={title} style={style}>
-              {Math.round(value.median * 1000)}
+              {Math.round(value.median * 1000)} {percent}
             </td>
         ));
 
