@@ -30,7 +30,7 @@ gulp.task('build', function(callback) {
     },
     plugins: [
       new webpack.NoErrorsPlugin(),
-      new webpack.DefinePlugin({'process.env': {NODE_ENV: 'production'}}),
+      new webpack.DefinePlugin({'process.env': {NODE_ENV: JSON.stringify('production')}}),
       new webpack.optimize.DedupePlugin(),
       new webpack.optimize.UglifyJsPlugin()
     ]
