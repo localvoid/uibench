@@ -281,6 +281,11 @@ document.addEventListener('DOMContentLoaded', function(e) {
         'name': 'React',
         'url': 'https://facebook.github.io/react/',
         'benchmarkUrl': 'https://localvoid.github.io/uibench-react'
+      },
+      {
+        'name': 'Bobril',
+        'url': 'https://github.com/Bobris/Bobril',
+        'benchmarkUrl': 'https://bobris.github.io/uibench-bobril'
       }
     ],
     results: new Results()
