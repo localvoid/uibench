@@ -322,6 +322,11 @@ document.addEventListener('DOMContentLoaded', function(e) {
         'name': 'Deku',
         'url': 'https://github.com/dekujs/deku',
         'benchmarkUrl': 'https://localvoid.github.io/uibench-deku'
+      },
+      {
+        'name': 'Mercury',
+        'url': 'https://github.com/Raynos/mercury',
+        'benchmarkUrl': 'https://localvoid.github.io/uibench-mercury'
       }
     ],
     results: new Results()
