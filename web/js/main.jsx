@@ -88,7 +88,11 @@ class Header extends React.Component {
 
 class Contestant extends React.Component {
   openWindow(e) {
-    window.open(URI(this.props.benchmarkUrl).addQuery({report: true}), '_blank');
+    var q = {report: true};
+    if (this.props.mobileMode) {
+      q.mobile = true;
+    }
+    window.open(URI(this.props.benchmarkUrl).addQuery(q), '_blank');
   }
 
   render() {
@@ -114,7 +118,11 @@ class CustomContestant extends React.Component {
   }
 
   openWindow(e) {
-    window.open(URI(this.state.url).addQuery({report: true}), '_blank');
+    var q = {report: true};
+    if (this.props.mobileMode) {
+      q.mobile = true;
+    }
+    window.open(URI(this.state.url).addQuery(q), '_blank');
   }
 
   render() {
@@ -133,17 +141,14 @@ class CustomContestant extends React.Component {
 }
 
 class Contestants extends React.Component {
-  shouldComponentUpdate(nextProps, nextState) {
-    return false;
-  }
-
   render() {
+    var props = this.props;
     return (
         <div className="list-group">
           {this.props.contestants.map(function(c) {
-            return (<Contestant key={`${c.name}__${c.version}`} {...c} />);
+            return (<Contestant key={`${c.name}__${c.version}`} {...c} mobileMode={props.mobileMode} />);
           })}
-          <CustomContestant key="custom" />
+          <CustomContestant key="custom" mobileMode={props.mobileMode} />
         </div>
     )
   }
@@ -259,12 +264,33 @@ class ResultsTable extends React.Component {
 }
 
 class Main extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      mobileMode: false
+    };
+  }
+
+  onMobileModeChange(e) {
+    this.setState({mobileMode: e.target.checked});
+  }
+
   render() {
     return (
         <div>
           <Header />
           <div className="container">
-            <Contestants contestants={this.props.contestants} />
+            <div className="panel panel-default">
+              <div className="panel-body">
+                <div className="checkbox">
+                  <label>
+                    <input type="checkbox" value={this.state.mobileMode} onChange={this.onMobileModeChange.bind(this)} />
+                    Mobile mode
+                  </label>
+                </div>
+              </div>
+            </div>
+            <Contestants contestants={this.props.contestants} mobileMode={this.state.mobileMode} />
             <ResultsTable results={this.props.results} />
           </div>
         </div>
