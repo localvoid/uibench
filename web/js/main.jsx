@@ -317,6 +317,11 @@ document.addEventListener('DOMContentLoaded', function(e) {
         'name': 'Bobril',
         'url': 'https://github.com/Bobris/Bobril',
         'benchmarkUrl': 'https://bobris.github.io/uibench-bobril'
+      },
+      {
+        'name': 'Deku',
+        'url': 'https://github.com/dekujs/deku',
+        'benchmarkUrl': 'https://localvoid.github.io/uibench-deku'
       }
     ],
     results: new Results()
