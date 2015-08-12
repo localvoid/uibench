@@ -88,8 +88,11 @@ class Header extends React.Component {
 
 class Contestant extends React.Component {
   openWindow(e) {
-    var q = {report: true};
-    if (this.props.mobileMode) {
+    var q = {
+      report: true,
+      i: this.props.opts.iterations
+    };
+    if (this.props.opts.mobileMode) {
       q.mobile = true;
     }
     window.open(URI(this.props.benchmarkUrl).addQuery(q), '_blank');
@@ -118,8 +121,11 @@ class CustomContestant extends React.Component {
   }
 
   openWindow(e) {
-    var q = {report: true};
-    if (this.props.mobileMode) {
+    var q = {
+      report: true,
+      i: this.props.opts.iterations
+    };
+    if (this.props.opts.mobileMode) {
       q.mobile = true;
     }
     window.open(URI(this.state.url).addQuery(q), '_blank');
@@ -146,9 +152,9 @@ class Contestants extends React.Component {
     return (
         <div className="list-group">
           {this.props.contestants.map(function(c) {
-            return (<Contestant key={`${c.name}__${c.version}`} {...c} mobileMode={props.mobileMode} />);
+            return (<Contestant key={`${c.name}__${c.version}`} {...c} opts={props.opts} />);
           })}
-          <CustomContestant key="custom" mobileMode={props.mobileMode} />
+          <CustomContestant key="custom" opts={props.opts} />
         </div>
     )
   }
@@ -267,12 +273,17 @@ class Main extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      mobileMode: false
+      mobileMode: false,
+      iterations: 3
     };
   }
 
   onMobileModeChange(e) {
     this.setState({mobileMode: e.target.checked});
+  }
+
+  onIterationsChange(e) {
+    this.setState({iterations: e.target.value});
   }
 
   render() {
@@ -288,9 +299,13 @@ class Main extends React.Component {
                     Mobile mode
                   </label>
                 </div>
+                <div className="form-group">
+                  <label for="iterations">Iterations</label>
+                  <input type="number" className="form-control" id="iterations" value={this.state.iterations} onChange={this.onIterationsChange.bind(this)} />
+                </div>
               </div>
             </div>
-            <Contestants contestants={this.props.contestants} mobileMode={this.state.mobileMode} />
+            <Contestants contestants={this.props.contestants} opts={this.state} />
             <ResultsTable results={this.props.results} />
           </div>
         </div>
