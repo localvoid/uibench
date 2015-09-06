@@ -342,6 +342,11 @@ document.addEventListener('DOMContentLoaded', function(e) {
         'name': 'Mercury',
         'url': 'https://github.com/Raynos/mercury',
         'benchmarkUrl': 'https://localvoid.github.io/uibench-mercury'
+      },
+      {
+        'name': 'kivi',
+        'url': 'https://github.com/localvoid/kivi',
+        'benchmarkUrl': 'https://localvoid.github.io/uibench-kivi'
       }
     ],
     results: new Results()
