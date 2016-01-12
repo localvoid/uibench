@@ -321,32 +321,32 @@ document.addEventListener('DOMContentLoaded', function(e) {
       {
         'name': 'React',
         'url': 'https://facebook.github.io/react/',
-        'benchmarkUrl': 'https://localvoid.github.io/uibench-react'
+        'benchmarkUrl': 'https://localvoid.github.io/uibench-react/'
       },
       {
         'name': 'React (latest dev version)',
         'url': 'https://facebook.github.io/react/',
-        'benchmarkUrl': 'https://localvoid.github.io/uibench-react-dev'
+        'benchmarkUrl': 'https://localvoid.github.io/uibench-react-dev/'
       },
       {
         'name': 'Bobril',
         'url': 'https://github.com/Bobris/Bobril',
-        'benchmarkUrl': 'https://bobris.github.io/uibench-bobril'
+        'benchmarkUrl': 'https://bobris.github.io/uibench-bobril'/
       },
       {
         'name': 'Deku',
         'url': 'https://github.com/dekujs/deku',
-        'benchmarkUrl': 'https://localvoid.github.io/uibench-deku'
+        'benchmarkUrl': 'https://localvoid.github.io/uibench-deku/'
       },
       {
         'name': 'Mercury',
         'url': 'https://github.com/Raynos/mercury',
-        'benchmarkUrl': 'https://localvoid.github.io/uibench-mercury'
+        'benchmarkUrl': 'https://localvoid.github.io/uibench-mercury/'
       },
       {
         'name': 'kivi',
         'url': 'https://github.com/localvoid/kivi',
-        'benchmarkUrl': 'https://localvoid.github.io/uibench-kivi'
+        'benchmarkUrl': 'https://localvoid.github.io/uibench-kivi/'
       }
     ],
     results: new Results()
