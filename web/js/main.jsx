@@ -347,6 +347,11 @@ document.addEventListener('DOMContentLoaded', function(e) {
         'name': 'kivi',
         'url': 'https://github.com/localvoid/kivi',
         'benchmarkUrl': 'https://localvoid.github.io/uibench-kivi/'
+      },
+      {
+        'name': 'Preact',
+        'url': 'https://github.com/developit/preact',
+        'benchmarkUrl': 'https://localvoid.github.io/uibench-preact/'
       }
     ],
     results: new Results()
