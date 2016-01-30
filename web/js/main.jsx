@@ -291,6 +291,14 @@ class Main extends React.Component {
         <div>
           <Header />
           <div className="container">
+            <div className="alert alert-warning" role="alert">
+              Implementations with very fast render times are using some form of DOM recycling. Most of the
+              implementations aren't using any DOM recycling techniques or it is disabled for this benchmark,
+              because it breaks "render" and "insert" cases, and the primary goal of this benchmark is for
+              developers to track regressions, optimize performance of their libraries.
+            </div>
+          </div>
+          <div className="container">
             <div className="panel panel-default">
               <div className="panel-body">
                 <div className="checkbox">
