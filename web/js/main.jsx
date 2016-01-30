@@ -351,7 +351,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
       {
         'name': 'Preact',
         'url': 'https://github.com/developit/preact',
-        'benchmarkUrl': 'https://localvoid.github.io/uibench-preact/'
+        'benchmarkUrl': 'https://developit.github.io/uibench-preact/'
       },
       {
         'name': 'React-lite',
