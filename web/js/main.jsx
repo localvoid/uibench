@@ -92,6 +92,9 @@ class Contestant extends React.Component {
       report: true,
       i: this.props.opts.iterations
     };
+    if (this.props.opts.disableSCU) {
+      q.disableSCU = true;
+    }
     if (this.props.opts.mobileMode) {
       q.mobile = true;
     }
@@ -125,6 +128,9 @@ class CustomContestant extends React.Component {
       report: true,
       i: this.props.opts.iterations
     };
+    if (this.props.opts.disableSCU) {
+      q.disableSCU = true;
+    }
     if (this.props.opts.mobileMode) {
       q.mobile = true;
     }
@@ -273,6 +279,7 @@ class Main extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      disableSCU: false,
       mobileMode: false,
       iterations: 3
     };
@@ -280,6 +287,10 @@ class Main extends React.Component {
 
   onMobileModeChange(e) {
     this.setState({mobileMode: e.target.checked});
+  }
+
+  onDisableSCUChange(e) {
+    this.setState({disableSCU: e.target.checked});
   }
 
   onIterationsChange(e) {
@@ -301,6 +312,12 @@ class Main extends React.Component {
           <div className="container">
             <div className="panel panel-default">
               <div className="panel-body">
+                <div className="checkbox">
+                  <label>
+                    <input type="checkbox" value={this.state.disableSCU} onChange={this.onDisableSCUChange.bind(this)} />
+                    Disable shouldComponentUpdate optimization
+                  </label>
+                </div>
                 <div className="checkbox">
                   <label>
                     <input type="checkbox" value={this.state.mobileMode} onChange={this.onMobileModeChange.bind(this)} />
