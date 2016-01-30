@@ -357,6 +357,11 @@ document.addEventListener('DOMContentLoaded', function(e) {
         'name': 'React-lite',
         'url': 'https://github.com/Lucifier129/react-lite',
         'benchmarkUrl': 'https://localvoid.github.io/uibench-react-lite/'
+      },
+      {
+        'name': 'Imba',
+        'url': 'https://github.com/somebee/imba',
+        'benchmarkUrl': 'http://somebee.github.io/uibench-imba/'
       }
 
     ],
