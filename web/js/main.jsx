@@ -258,6 +258,13 @@ class ResultsTable extends React.Component {
         <div className="panel panel-default">
           <div className="panel-heading">Results (lower is better)</div>
           <div className="panel-body">
+            <h4>Flags:</h4>
+            <ul>
+              <li><strong>+r</strong> means that library is using recycling, and instead of creating new DOM objects
+                on each update, it reuses them, so it breaks test cases like "render" or "insert".</li>
+              <li><strong>+s</strong> means that library is using
+                <code>shouldComponentUpdate</code> optimization.</li>
+            </ul>
             <div className="input-group">
               <span className="input-group-addon">Filter</span>
               <input type="text" className="form-control" placeholder="For ex.: update()" value={filter} onChange={this.handleFilterChange.bind(this)} />
@@ -302,20 +309,12 @@ class Main extends React.Component {
         <div>
           <Header />
           <div className="container">
-            <div className="alert alert-warning" role="alert">
-              Implementations with very fast render times are using some form of DOM recycling. Most of the
-              implementations aren't using any DOM recycling techniques or it is disabled for this benchmark,
-              because it breaks "render" and "insert" cases, and the primary goal of this benchmark is for
-              developers to track regressions, optimize performance of their libraries.
-            </div>
-          </div>
-          <div className="container">
             <div className="panel panel-default">
               <div className="panel-body">
                 <div className="checkbox">
                   <label>
                     <input type="checkbox" value={this.state.disableSCU} onChange={this.onDisableSCUChange.bind(this)} />
-                    Disable shouldComponentUpdate optimization
+                    Disable <code>shouldComponentUpdate</code> optimization
                   </label>
                 </div>
                 <div className="checkbox">
