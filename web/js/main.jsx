@@ -260,8 +260,8 @@ class ResultsTable extends React.Component {
           <div className="panel-body">
             <h4>Flags:</h4>
             <ul>
-              <li><strong>+r</strong> means that library is using recycling, and instead of creating new DOM objects
-                on each update, it reuses them, so it breaks test cases like "render" or "insert".</li>
+              <li><strong>+r</strong> means that library is using DOM recycling, and instead of creating new DOM nodes
+                on each update, it reuses them, so it breaks test cases like "render" and "insert".</li>
               <li><strong>+s</strong> means that library is using
                 <code>shouldComponentUpdate</code> optimization.</li>
             </ul>
