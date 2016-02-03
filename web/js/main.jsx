@@ -80,6 +80,15 @@ class Header extends React.Component {
         <div className="jumbotron">
           <div className="container">
             <h1>UI Benchmark</h1>
+            <p>To start benchmarking, click on the "Open" button below library name that you want to test, it will
+              open a new window, perform tests and send results back to the main window, results will be displayed
+              at the bottom section "Results".</p>
+            <p>This benchmark measures how long it takes to perform update from one state to another, it doesn't
+              measure how long will take paint/layout/composition phases, just js part.</p>
+            <p>In the "Results" section there will be different test cases, for example test case <code>table/[100,4]/render</code> represents
+              update from empty table to table with 100 rows and 4 columns. Test case <code>table/[100,4]/filter/32</code> is
+              an update from table with 100 rows and 4 columns to the same table where each 32th item is removed.
+              Details about all test cases can be found inside the <a href="https://github.com/localvoid/uibench-base/blob/master/lib/init.js">init.js</a> file.</p>
           </div>
         </div>
     );
