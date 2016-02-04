@@ -274,6 +274,8 @@ class ResultsTable extends React.Component {
               <li><strong>+s</strong> means that library is using
                 <code>shouldComponentUpdate</code> optimization.</li>
             </ul>
+            <p>Don't use <u>Overall time</u> row to make any conclusions, like library X is N times faster than
+              library Y. This row is used by library developers to easily check if there is some regression.</p>
             <div className="input-group">
               <span className="input-group-addon">Filter</span>
               <input type="text" className="form-control" placeholder="For ex.: update()" value={filter} onChange={this.handleFilterChange.bind(this)} />
