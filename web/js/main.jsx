@@ -104,6 +104,9 @@ class Contestant extends React.Component {
     if (this.props.opts.disableSCU) {
       q.disableSCU = true;
     }
+    if (this.props.opts.enableDOMRecycling) {
+      q.enableDOMRecycling = true;
+    }
     if (this.props.opts.mobileMode) {
       q.mobile = true;
     }
@@ -298,6 +301,7 @@ class Main extends React.Component {
     super(props);
     this.state = {
       disableSCU: false,
+      enableDOMRecycling: false,
       mobileMode: false,
       iterations: 3
     };
@@ -309,6 +313,10 @@ class Main extends React.Component {
 
   onDisableSCUChange(e) {
     this.setState({disableSCU: e.target.checked});
+  }
+
+  onEnableDOMRecyclingChange(e) {
+    this.setState({enableDOMRecycling: e.target.checked});
   }
 
   onIterationsChange(e) {
@@ -326,6 +334,12 @@ class Main extends React.Component {
                   <label>
                     <input type="checkbox" value={this.state.disableSCU} onChange={this.onDisableSCUChange.bind(this)} />
                     Disable <code>shouldComponentUpdate</code> optimization
+                  </label>
+                </div>
+                <div className="checkbox">
+                  <label>
+                    <input type="checkbox" value={this.state.enableDOMRecycling} onChange={this.onEnableDOMRecyclingChange.bind(this)} />
+                    Enable DOM recycling
                   </label>
                 </div>
                 <div className="checkbox">
