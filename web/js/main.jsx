@@ -368,12 +368,12 @@ document.addEventListener('DOMContentLoaded', function(e) {
   var state = {
     contestants: [
       {
-        'name': 'React',
+        'name': 'React 0.14',
         'url': 'https://facebook.github.io/react/',
         'benchmarkUrl': 'https://localvoid.github.io/uibench-react/'
       },
       {
-        'name': 'React 0.15',
+        'name': 'React 15',
         'url': 'https://facebook.github.io/react/',
         'benchmarkUrl': 'https://localvoid.github.io/uibench-react-dev/'
       },
