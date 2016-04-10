@@ -98,11 +98,17 @@ class Contestant extends React.Component {
 class CustomContestant extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {url: ''};
+    var url = localStorage['customURL'];
+    if (url === void 0) {
+      url = '';
+    }
+    this.state = {url: url};
   }
 
   changeUrl(e) {
-    this.setState({url: e.target.value});
+    var v = e.target.value;
+    localStorage['customURL'] = v;
+    this.setState({url: v});
   }
 
   openWindow(e) {
