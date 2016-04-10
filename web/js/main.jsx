@@ -19,44 +19,14 @@ function Report(name, version, samples) {
   this.samples = samples;
 }
 
-Report.prototype.addSamples = function(samples) {
-  var keys = Object.keys(samples);
-  for (var i = 0; i < keys.length; i++) {
-    var sampleName = keys[i];
-    var s = samples[sampleName];
-    var v = this.samples[s.name];
-    if (v === void 0) {
-      this.samples[sampleName] = s;
-    } else {
-      this.samples[sampleName] = v.concat(s);
-    }
-  }
-};
-
 function Results() {
   this.reports = [];
   this.sampleNames = [];
   this.sampleNamesIndex = {};
 }
 
-Results.prototype.find = function(name, version) {
-  for (var i = 0; i < this.reports.length; i++) {
-    var report = this.reports[i];
-    if (report.name === name && report.version === version) {
-      return report;
-    }
-  }
-  return null;
-};
-
 Results.prototype.update = function(name, version, samples) {
-  var r = this.find(name, version);
-
-  if (r == null) {
-    this.reports.push(new Report(name, version, samples));
-  } else {
-    r.addSamples(samples);
-  }
+  this.reports.push(new Report(name, version, samples));
 
   // update list of sample names
   var keys = Object.keys(samples);
@@ -206,7 +176,7 @@ class ResultsTable extends React.Component {
     }
 
     var titles = reports.map(function(r) {
-      return (<th key={r.name + '__' + r.version}>{r.name} <small>{r.version}</small></th>);
+      return (<th>{r.name} <small>{r.version}</small></th>);
     });
 
     var rows = [];
@@ -218,7 +188,7 @@ class ResultsTable extends React.Component {
         continue;
       }
 
-      var cols = [(<td key="sampleName"><code>{sampleName}</code></td>)];
+      var cols = [(<td><code>{sampleName}</code></td>)];
 
       var values = reports.map(function(r) {
         var samples = r.samples[sampleName];
@@ -255,7 +225,7 @@ class ResultsTable extends React.Component {
         var percent = medianMin === value.median ? null : (<small>{'(' + (((value.median / medianMin) - 1) * 100).toFixed(2) + '%)'}</small>);
 
         cols.push((
-            <td key={report.name + '__' + report.version} title={title} style={style}>
+            <td title={title} style={style}>
               {Math.round(value.median * 1000)} {percent}
             </td>
         ));
@@ -263,7 +233,7 @@ class ResultsTable extends React.Component {
         overallTime[j] += Math.round(value.median * 1000);
       }
 
-      rows.push((<tr key={sampleName}>{cols}</tr>));
+      rows.push((<tr>{cols}</tr>));
     }
 
     return (
