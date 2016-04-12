@@ -80,6 +80,9 @@ class Contestant extends React.Component {
     if (this.props.opts.mobileMode) {
       q.mobile = true;
     }
+    if (this.props.opts.testFilter) {
+      q.filter = this.props.opts.testFilter;
+    }
     window.open(URI(this.props.benchmarkUrl).addQuery(q), '_blank');
   }
 
@@ -119,8 +122,14 @@ class CustomContestant extends React.Component {
     if (this.props.opts.disableSCU) {
       q.disableSCU = true;
     }
+    if (this.props.opts.enableDOMRecycling) {
+      q.enableDOMRecycling = true;
+    }
     if (this.props.opts.mobileMode) {
       q.mobile = true;
+    }
+    if (this.props.opts.testFilter) {
+      q.filter = this.props.opts.testFilter;
     }
     window.open(URI(this.state.url).addQuery(q), '_blank');
   }
@@ -257,7 +266,7 @@ class ResultsTable extends React.Component {
               library Y. This row is used by library developers to easily check if there is some regression.</p>
             <div className="input-group">
               <span className="input-group-addon">Filter</span>
-              <input type="text" className="form-control" placeholder="For ex.: update()" value={filter} onChange={this.handleFilterChange.bind(this)} />
+              <input type="text" className="form-control" placeholder="For example: render" value={filter} onChange={this.handleFilterChange.bind(this)} />
             </div>
             <table className="table table-condensed">
               <thead><tr><th key="empty"></th>{titles}</tr></thead>
@@ -279,8 +288,15 @@ class Main extends React.Component {
       disableSCU: false,
       enableDOMRecycling: false,
       mobileMode: false,
-      iterations: 3
+      iterations: 3,
+      filter: ''
     };
+
+    this.onMobileModeChange = this.onMobileModeChange.bind(this);
+    this.onDisableSCUChange = this.onDisableSCUChange.bind(this);
+    this.onEnableDOMRecyclingChange = this.onEnableDOMRecyclingChange.bind(this);
+    this.onIterationsChange = this.onIterationsChange.bind(this);
+    this.onTestFilterChange = this.onTestFilterChange.bind(this);
   }
 
   onMobileModeChange(e) {
@@ -299,6 +315,10 @@ class Main extends React.Component {
     this.setState({iterations: e.target.value});
   }
 
+  onTestFilterChange(e) {
+    this.setState({testFilter: e.target.value});
+  }
+
   render() {
     return (
         <div>
@@ -308,25 +328,29 @@ class Main extends React.Component {
               <div className="panel-body">
                 <div className="checkbox">
                   <label>
-                    <input type="checkbox" value={this.state.disableSCU} onChange={this.onDisableSCUChange.bind(this)} />
+                    <input type="checkbox" value={this.state.disableSCU} onChange={this.onDisableSCUChange} />
                     Disable <code>shouldComponentUpdate</code> optimization
                   </label>
                 </div>
                 <div className="checkbox">
                   <label>
-                    <input type="checkbox" value={this.state.enableDOMRecycling} onChange={this.onEnableDOMRecyclingChange.bind(this)} />
-                    Enable DOM recycling
+                    <input type="checkbox" value={this.state.enableDOMRecycling} onChange={this.onEnableDOMRecyclingChange} />
+                    Enable DOM recycling (if implementation supports changing)
                   </label>
                 </div>
                 <div className="checkbox">
                   <label>
-                    <input type="checkbox" value={this.state.mobileMode} onChange={this.onMobileModeChange.bind(this)} />
+                    <input type="checkbox" value={this.state.mobileMode} onChange={this.onMobileModeChange} />
                     Mobile mode
                   </label>
                 </div>
                 <div className="form-group">
                   <label for="iterations">Iterations</label>
-                  <input type="number" className="form-control" id="iterations" value={this.state.iterations} onChange={this.onIterationsChange.bind(this)} />
+                  <input type="number" className="form-control" id="iterations" value={this.state.iterations} onChange={this.onIterationsChange} />
+                </div>
+                <div className="form-group">
+                  <label for="test-filter">Tests filter</label>
+                  <input type="text" className="form-control" id="test-filter" value={this.state.testFilter} placeholder="For example: render" onChange={this.onTestFilterChange} />
                 </div>
               </div>
             </div>
