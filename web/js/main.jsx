@@ -90,6 +90,7 @@ class Contestant extends React.Component {
     return (
         <div className="list-group-item">
           <h4 className="list-group-item-heading"><a href={this.props.url} target="_blank">{this.props.name}</a></h4>
+          <p><small>{this.props.comments}</small></p>
           <div className="btn-group btn-group-xs">
             <button className="btn btn-default" onClick={this.openWindow.bind(this)}>Open</button>
           </div>
@@ -370,47 +371,56 @@ document.addEventListener('DOMContentLoaded', function(e) {
       {
         'name': 'React 0.14',
         'url': 'https://facebook.github.io/react/',
-        'benchmarkUrl': 'https://localvoid.github.io/uibench-react/'
+        'benchmarkUrl': 'https://localvoid.github.io/uibench-react/',
+        'comments': 'Virtual DOM (immutable VNodes).'
       },
       {
         'name': 'React 15',
         'url': 'https://facebook.github.io/react/',
-        'benchmarkUrl': 'https://localvoid.github.io/uibench-react-dev/'
+        'benchmarkUrl': 'https://localvoid.github.io/uibench-react-dev/',
+        'comments': 'Virtual DOM (immutable VNodes). Compiled with: es2015-loose, transform-react-inline-elements.'
       },
       {
         'name': 'Bobril',
         'url': 'https://github.com/Bobris/Bobril',
-        'benchmarkUrl': 'https://bobris.github.io/uibench-bobril/'
+        'benchmarkUrl': 'https://bobris.github.io/uibench-bobril/',
+        'comments': 'Virtual DOM.'
       },
       {
         'name': 'Deku',
         'url': 'https://github.com/dekujs/deku',
-        'benchmarkUrl': 'https://localvoid.github.io/uibench-deku/'
+        'benchmarkUrl': 'https://localvoid.github.io/uibench-deku/',
+        'comments': 'Virtual DOM (immutable VNodes), benchmark implementation is working extremely slow.'
       },
       {
         'name': 'Mercury',
         'url': 'https://github.com/Raynos/mercury',
-        'benchmarkUrl': 'https://localvoid.github.io/uibench-mercury/'
+        'benchmarkUrl': 'https://localvoid.github.io/uibench-mercury/',
+        'comments': 'Virtual DOM (immutable VNodes).'
       },
       {
         'name': 'kivi',
         'url': 'https://github.com/localvoid/kivi',
-        'benchmarkUrl': 'https://localvoid.github.io/uibench-kivi/'
+        'benchmarkUrl': 'https://localvoid.github.io/uibench-kivi/',
+        'comments': 'Virtual DOM, benchmark implementation is using all optimizations that available in kivi API, except for DOM Nodes recycling.'
       },
       {
         'name': 'Preact',
         'url': 'https://github.com/developit/preact',
-        'benchmarkUrl': 'https://developit.github.io/uibench-preact/'
+        'benchmarkUrl': 'https://developit.github.io/uibench-preact/',
+        'comments': 'Virtual DOM (immutable VNodes without identity check optimization). Using DOM Nodes recycling by default.'
       },
       {
         'name': 'React-lite',
         'url': 'https://github.com/Lucifier129/react-lite',
-        'benchmarkUrl': 'https://localvoid.github.io/uibench-react-lite/'
+        'benchmarkUrl': 'https://localvoid.github.io/uibench-react-lite/',
+        'comments': 'Virtual DOM (immutable VNodes).'
       },
       {
         'name': 'Imba',
         'url': 'https://github.com/somebee/imba',
-        'benchmarkUrl': 'http://somebee.github.io/uibench-imba/'
+        'benchmarkUrl': 'http://somebee.github.io/uibench-imba/',
+        'comments': 'Programming language with UI library that have Virtual DOM like API but with different algorithm for change detection. Using DOM Nodes recycling by default.'
       }
 
     ],
