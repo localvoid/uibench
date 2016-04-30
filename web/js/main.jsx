@@ -399,9 +399,15 @@ document.addEventListener('DOMContentLoaded', function(e) {
         'comments': 'Virtual DOM (immutable VNodes).'
       },
       {
-        'name': 'kivi',
+        'name': 'kivi [simple]',
         'url': 'https://github.com/localvoid/kivi',
-        'benchmarkUrl': 'https://localvoid.github.io/uibench-kivi/',
+        'benchmarkUrl': 'https://localvoid.github.io/uibench-kivi/simple.html',
+        'comments': 'Virtual DOM, simple benchmark implementation without any advanced optimizations.'
+      },
+      {
+        'name': 'kivi [advanced]',
+        'url': 'https://github.com/localvoid/kivi',
+        'benchmarkUrl': 'https://localvoid.github.io/uibench-kivi/advanced.html',
         'comments': 'Virtual DOM, benchmark implementation is using all optimizations that available in kivi API, except for DOM Nodes recycling.'
       },
       {
