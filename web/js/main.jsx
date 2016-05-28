@@ -425,10 +425,15 @@ document.addEventListener('DOMContentLoaded', function(e) {
       {
         'name': 'Imba',
         'url': 'https://github.com/somebee/imba',
-        'benchmarkUrl': 'http://somebee.github.io/uibench-imba/',
+        'benchmarkUrl': 'https://somebee.github.io/uibench-imba/',
         'comments': 'Programming language with UI library that have Virtual DOM like API but with different algorithm for change detection. Using DOM Nodes recycling by default.'
+      },
+      {
+        'name': 'yo-yo',
+        'url': 'https://github.com/maxogden/yo-yo',
+        'benchmarkUrl': 'https://localvoid.github.io/uibench-yo-yo/',
+        'comments': 'Doesn\'t support sCU optimization, diff is performed on a real DOM instead of virtual DOM.'
       }
-
     ],
     results: new Results()
   };
