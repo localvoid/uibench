@@ -1,54 +1,54 @@
-'use strict';
-var gulp = require('gulp');
-var gutil = require('gulp-util');
-var webpack = require('webpack');
-var WebpackDevServer = require('webpack-dev-server');
-var ghPages = require('gulp-gh-pages');
-var path = require('path');
+const gulp = require('gulp');
+const gutil = require('gulp-util');
+const webpack = require('webpack');
+const WebpackDevServer = require('webpack-dev-server');
+const path = require('path');
 
-gulp.task('html', function() {
-  gulp.src('web/index.html')
-      .pipe(gulp.dest('build'));
-});
+const WPConfig = {
+  resolve: {
+    extensions: ['', '.js', '.jsx']
+  },
+  module: {
+    loaders: [{
+      test: /\.jsx?$/,
+      exclude: /(node_modules)/,
+      loaders: ['babel?{ "presets": ["es2015-loose", "react"], "plugins": ["transform-react-inline-elements"] }']
+    }]
+  },
+};
 
-gulp.task('build', function(callback) {
-  var cfg = {
-    entry: ['./web/js/main.jsx'],
+function copyHtml() {
+  return gulp.src('web/index.html')
+    .pipe(gulp.dest('build'));
+}
+
+function buildJS(done) {
+  webpack(Object.assign({}, WPConfig, {
+    entry: ['./web/main.jsx'],
     output: {
       path: path.join(__dirname, 'build'),
       filename: 'bundle.js'
     },
-    resolve: {
-      extensions: ['', '.js', '.jsx']
-    },
-    module: {
-      loaders: [{
-        test: /\.jsx?$/,
-        exclude: /(node_modules)/,
-        loaders: ['babel']
-      }]
-    },
     plugins: [
       new webpack.NoErrorsPlugin(),
-      new webpack.DefinePlugin({'process.env': {NODE_ENV: JSON.stringify('production')}}),
+      new webpack.DefinePlugin({ 'process.env': { NODE_ENV: JSON.stringify('production') } }),
       new webpack.optimize.DedupePlugin(),
       new webpack.optimize.UglifyJsPlugin()
-    ]
-  };
-
-  webpack(cfg, function(err, stats) {
-    if (err) throw new gutil.PluginError('build', err);
-    gutil.log('[build]', stats.toString({colors: true}));
-    callback();
+    ],
+  }), (err, stats) => {
+    if (err) {
+      throw new gutil.PluginError('build', err);
+    }
+    gutil.log('[build]', stats.toString({ colors: true }));
+    done();
   });
-});
+}
 
-
-gulp.task('serve', ['html'], function(callback) {
-  var cfg = {
+function serve() {
+  new WebpackDevServer(webpack(Object.assign({}, WPConfig, {
     entry: [
       'webpack-dev-server/client?http://0.0.0.0:8080',
-      './web/js/main.jsx'
+      './web/main.jsx'
     ],
     devtool: 'eval',
     debug: true,
@@ -56,35 +56,31 @@ gulp.task('serve', ['html'], function(callback) {
       path: path.join(__dirname, 'build'),
       filename: 'bundle.js'
     },
-    resolve: {
-      extensions: ['', '.js', '.jsx']
-    },
-    module: {
-      loaders: [{
-        test: /\.jsx?$/,
-        exclude: /(node_modules)/,
-        loaders: ['babel']
-      }]
-    },
     plugins: [
       new webpack.NoErrorsPlugin()
-    ]
-  };
-
-  new WebpackDevServer(webpack(cfg), {
+    ],
+  })), {
     contentBase: './build',
     stats: {
       colors: true
     }
-  }).listen(8080, '0.0.0.0', function (err) {
-    if (err) throw new gutil.PluginError('webpack-dev-server', err);
+  }).listen(8080, '0.0.0.0', (err) => {
+    if (err) {
+      throw new gutil.PluginError('webpack-dev-server', err);
+    }
     gutil.log('[serve]', 'http://localhost:8080/webpack-dev-server/index.html');
   });
-});
+}
 
-gulp.task('deploy', ['default'], function () {
+function deploy() {
+  const ghPages = require('gulp-gh-pages');
+
   return gulp.src('./build/**/*')
-      .pipe(ghPages());
-});
+    .pipe(ghPages());
+}
 
-gulp.task('default', ['html', 'build']);
+const build = gulp.parallel(copyHtml, buildJS);
+
+exports.default = build;
+exports.deploy = gulp.series(build, deploy);
+exports.serve = serve;
