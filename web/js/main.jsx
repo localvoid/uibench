@@ -432,7 +432,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
         'name': 'yo-yo',
         'url': 'https://github.com/maxogden/yo-yo',
         'benchmarkUrl': 'https://localvoid.github.io/uibench-yo-yo/',
-        'comments': 'Diff on real DOM nodes (`morphdom` library). Benchmark implementation doesn\'t support sCU optimization.'
+        'comments': 'Real DOM diff/patch (`morphdom` library). Benchmark implementation doesn\'t support sCU optimization (doesn\'t have components/thunks overhead).'
       },
       {
         'name': 'Snabbdom',
@@ -444,7 +444,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
         'name': 'Maquette',
         'url': 'http://maquettejs.org/',
         'benchmarkUrl': 'https://localvoid.github.io/uibench-maquette/',
-        'comments': 'Virtual DOM. Benchmark implementation doesn\'t support sCU optimization.'
+        'comments': 'Virtual DOM. Benchmark implementation doesn\'t support sCU optimization (doesn\'t have components/thunks overhead).'
       }
     ],
     results: new Results()
