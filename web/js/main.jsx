@@ -381,6 +381,12 @@ document.addEventListener('DOMContentLoaded', function(e) {
         'comments': 'Virtual DOM. Compiled with: es2015-loose, transform-react-inline-elements.'
       },
       {
+        'name': 'React 15 [Functional Components]',
+        'url': 'https://facebook.github.io/react/',
+        'benchmarkUrl': 'https://localvoid.github.io/uibench-react-dev/fc.html',
+        'comments': 'Virtual DOM. Benchmark implementation doesn\'t support sCU optimization. Compiled with: es2015-loose, transform-react-inline-elements.'
+      },
+      {
         'name': 'Bobril',
         'url': 'https://github.com/Bobris/Bobril',
         'benchmarkUrl': 'https://bobris.github.io/uibench-bobril/',
