@@ -396,7 +396,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
         'name': 'Mercury',
         'url': 'https://github.com/Raynos/mercury',
         'benchmarkUrl': 'https://localvoid.github.io/uibench-mercury/',
-        'comments': 'Virtual DOM.'
+        'comments': 'Virtual DOM (`virtual-dom` library).'
       },
       {
         'name': 'kivi [simple]',
@@ -432,7 +432,19 @@ document.addEventListener('DOMContentLoaded', function(e) {
         'name': 'yo-yo',
         'url': 'https://github.com/maxogden/yo-yo',
         'benchmarkUrl': 'https://localvoid.github.io/uibench-yo-yo/',
-        'comments': 'Diff on real DOM nodes (morphdom library). Doesn\'t support sCU optimization.'
+        'comments': 'Diff on real DOM nodes (`morphdom` library). Benchmark implementation doesn\'t support sCU optimization.'
+      },
+      {
+        'name': 'Snabbdom',
+        'url': 'https://github.com/paldepind/snabbdom',
+        'benchmarkUrl': 'https://localvoid.github.io/uibench-snabbdom/',
+        'comments': 'Virtual DOM.'
+      },
+      {
+        'name': 'Maquette',
+        'url': 'http://maquettejs.org/',
+        'benchmarkUrl': 'https://localvoid.github.io/uibench-maquette/',
+        'comments': 'Virtual DOM. Benchmark implementation doesn\'t support sCU optimization.'
       }
     ],
     results: new Results()
