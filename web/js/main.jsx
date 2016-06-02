@@ -1,6 +1,7 @@
 import React from 'react';
 import URI from 'URIjs';
 import d3 from 'd3';
+import {RgbColor, HslColor, hslToRgb, formatRgbToHex} from 'inkdrop';
 
 function stdev(items) {
   var m = d3.mean(items);
@@ -58,7 +59,7 @@ class Header extends React.Component {
             <p>In the "Results" section there will be different test cases, for example test case <code>table/[100,4]/render</code> represents
               update from empty table to table with 100 rows and 4 columns. Test case <code>table/[100,4]/filter/32</code> is
               an update from table with 100 rows and 4 columns to the same table where each 32th item is removed.
-              Details about all test cases can be found inside the <a href="https://github.com/localvoid/uibench-base/blob/master/lib/init.js">init.js</a> file.</p>
+              Details about all test cases can be found inside the <a href="https://github.com/localvoid/uibench-base/blob/master/lib/uibench.ts#L317">uibench.js</a> file.</p>
           </div>
         </div>
     );
@@ -227,8 +228,9 @@ class ResultsTable extends React.Component {
       for (var j = 0; j < reports.length; j++) {
         var report = reports[j];
         var value = values[j];
+        var color = hslToRgb(new HslColor((120 * (1 - scale(value.median))) / 360, 0.7, 0.85));
         var style = {
-          background: 'rgba(46, 204, 64, ' + ((1 - scale(value.median)) * 0.5).toString() + ')'
+          background: formatRgbToHex(color)
         };
 
         var title = 'samples: ' + value.sampleCount.toString() + '\n';
@@ -362,7 +364,6 @@ class Main extends React.Component {
     );
   }
 }
-
 
 document.addEventListener('DOMContentLoaded', function(e) {
   var container = document.querySelector('#App');
