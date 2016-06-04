@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import URI from 'URIjs';
 import d3 from 'd3';
-import {RgbColor, HslColor, hslToRgb, formatRgbToHex} from 'inkdrop';
+import {LchColor, lchToRgb, formatRgbToHex} from 'inkdrop';
 
 function stdev(items) {
   const m = d3.mean(items);
@@ -224,7 +224,7 @@ class ResultsTable extends React.Component {
       for (let j = 0; j < reports.length; j++) {
         const report = reports[j];
         const value = values[j];
-        const color = hslToRgb(new HslColor((120 * (1 - scale(value.median))) / 360, 0.7, 0.85));
+        const color = lchToRgb(new LchColor(0.9, 0.4, (30 + 110 * (1 - scale(value.median))) / 360));
         const style = {
           background: formatRgbToHex(color)
         };

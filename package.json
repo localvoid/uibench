@@ -16,7 +16,7 @@
   ],
   "dependencies": {
     "d3": "^3.5.17",
-    "inkdrop": "^0.2.1",
+    "inkdrop": "^0.2.2",
     "react": "^15.1.0",
     "react-dom": "^15.1.0",
     "urijs": "^1.18.1"
