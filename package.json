@@ -19,7 +19,8 @@
     "inkdrop": "^0.2.2",
     "react": "^15.1.0",
     "react-dom": "^15.1.0",
-    "urijs": "^1.18.1"
+    "urijs": "^1.18.1",
+    "whatwg-fetch": "^1.0.0"
   },
   "devDependencies": {
     "babel-core": "^6.9.1",
