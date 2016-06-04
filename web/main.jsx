@@ -103,7 +103,7 @@ class Contestant extends React.Component {
   render() {
     return (
       <div className="list-group-item">
-        <h4 className="list-group-item-heading"><a href={this.props.url} target="_blank">{this.props.name}</a></h4>
+        <h4 className="list-group-item-heading"><a href={this.props.url} target="_blank">{this.props.name}</a> <small>{this.props.size} bytes</small></h4>
         <p><small>{this.props.comments}</small></p>
         <div className="btn-group btn-group-xs">
           <button className="btn btn-default" onClick={this.openWindow}>Open</button>
@@ -367,85 +367,99 @@ document.addEventListener('DOMContentLoaded', function(e) {
         'name': 'React 0.14',
         'url': 'https://facebook.github.io/react/',
         'benchmarkUrl': 'https://localvoid.github.io/uibench-react/',
-        'comments': 'Virtual DOM.'
+        'comments': 'Virtual DOM.',
+        'size': 142236
       },
       {
         'name': 'React 15',
         'url': 'https://facebook.github.io/react/',
         'benchmarkUrl': 'https://localvoid.github.io/uibench-react-dev/',
-        'comments': 'Virtual DOM. Compiled with: es2015-loose, transform-react-inline-elements.'
+        'comments': 'Virtual DOM. Compiled with: es2015-loose, transform-react-inline-elements.',
+        'size': 145694
       },
       {
         'name': 'React 15 [Functional Components]',
         'url': 'https://facebook.github.io/react/',
         'benchmarkUrl': 'https://localvoid.github.io/uibench-react-dev/fc.html',
-        'comments': 'Virtual DOM. Benchmark implementation doesn\'t support sCU optimization. Compiled with: es2015-loose, transform-react-inline-elements.'
+        'comments': 'Virtual DOM. Benchmark implementation doesn\'t support sCU optimization. Compiled with: es2015-loose, transform-react-inline-elements.',
+        'size': 142980
       },
       {
         'name': 'Bobril',
         'url': 'https://github.com/Bobris/Bobril',
         'benchmarkUrl': 'https://bobris.github.io/uibench-bobril/',
-        'comments': 'Virtual DOM.'
+        'comments': 'Virtual DOM.',
+        'size': 39799
       },
       {
         'name': 'Deku',
         'url': 'https://github.com/dekujs/deku',
         'benchmarkUrl': 'https://localvoid.github.io/uibench-deku/',
-        'comments': 'Virtual DOM.'
+        'comments': 'Virtual DOM.',
+        'size': 21642
       },
       {
         'name': 'Mercury',
         'url': 'https://github.com/Raynos/mercury',
         'benchmarkUrl': 'https://localvoid.github.io/uibench-mercury/',
-        'comments': 'Virtual DOM (`virtual-dom` library).'
+        'comments': 'Virtual DOM (`virtual-dom` library).',
+        'size': 43541
       },
       {
         'name': 'kivi [simple]',
         'url': 'https://github.com/localvoid/kivi',
         'benchmarkUrl': 'https://localvoid.github.io/uibench-kivi/simple.html',
-        'comments': 'Virtual DOM, simple benchmark implementation without any advanced optimizations.'
+        'comments': 'Virtual DOM, simple benchmark implementation without any advanced optimizations.',
+        'size': 14838
       },
       {
         'name': 'kivi [advanced]',
         'url': 'https://github.com/localvoid/kivi',
         'benchmarkUrl': 'https://localvoid.github.io/uibench-kivi/advanced.html',
-        'comments': 'Virtual DOM, benchmark implementation is using all optimizations that available in kivi API, except for DOM Nodes recycling.'
+        'comments': 'Virtual DOM, benchmark implementation is using all optimizations that available in kivi API, except for DOM Nodes recycling.',
+        'size': 16583
       },
       {
         'name': 'Preact',
         'url': 'https://github.com/developit/preact',
         'benchmarkUrl': 'https://developit.github.io/uibench-preact/',
-        'comments': 'Virtual DOM. Using DOM Nodes recycling by default.'
+        'comments': 'Virtual DOM. Using DOM Nodes recycling by default.',
+        'size': 15765
       },
       {
         'name': 'React-lite',
         'url': 'https://github.com/Lucifier129/react-lite',
         'benchmarkUrl': 'https://localvoid.github.io/uibench-react-lite/',
-        'comments': 'Virtual DOM.'
+        'comments': 'Virtual DOM.',
+        'size': 32888
       },
       {
         'name': 'Imba',
         'url': 'https://github.com/somebee/imba',
         'benchmarkUrl': 'https://somebee.github.io/uibench-imba/',
-        'comments': 'Programming language with UI library that has Virtual DOM like API. Using DOM Nodes recycling by default.'
+        'comments': 'Programming language with UI library that has Virtual DOM like API. Using DOM Nodes recycling by default.',
+        'size': 66916
       },
       {
         'name': 'yo-yo',
         'url': 'https://github.com/maxogden/yo-yo',
         'benchmarkUrl': 'https://localvoid.github.io/uibench-yo-yo/',
-        'comments': 'Real DOM diff/patch (`morphdom` library). Benchmark implementation doesn\'t support sCU optimization (doesn\'t have components/thunks overhead).'
+        'comments': 'Real DOM diff/patch (`morphdom` library). Benchmark implementation doesn\'t support sCU optimization (doesn\'t have components/thunks overhead).',
+        'size': 17343
       },
       {
         'name': 'Snabbdom',
         'url': 'https://github.com/paldepind/snabbdom',
         'benchmarkUrl': 'https://localvoid.github.io/uibench-snabbdom/',
-        'comments': 'Virtual DOM.'
+        'comments': 'Virtual DOM.',
+        'size': 9634
       },
       {
         'name': 'Maquette',
         'url': 'http://maquettejs.org/',
         'benchmarkUrl': 'https://localvoid.github.io/uibench-maquette/',
-        'comments': 'Virtual DOM. Benchmark implementation doesn\'t support sCU optimization (doesn\'t have components/thunks overhead).'
+        'comments': 'Virtual DOM. Benchmark implementation doesn\'t support sCU optimization (doesn\'t have components/thunks overhead).',
+        'size': 10484
       }
     ],
     results: new Results()
