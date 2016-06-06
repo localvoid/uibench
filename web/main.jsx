@@ -64,6 +64,9 @@ class Header extends React.Component {
             columns. Test case <code>table/[100,4]/filter/32</code> is an update from table with 100 rows and 4
             columns to the same table where each 32th item is removed. Details about all test cases can be found inside
             the <a href="https://github.com/localvoid/uibench-base/blob/master/lib/uibench.ts#L317">uibench.js</a> file.</p>
+          <p className="lead">
+            <a className="github-button" href="https://github.com/localvoid/uibench" data-style="mega" data-count-href="/localvoid/uibench/stargazers" data-count-api="/repos/localvoid/uibench#stargazers_count" data-count-aria-label="# stargazers on GitHub" aria-label="Star localvoid/uibench on GitHub">Star</a>
+          </p>
         </div>
       </div>
     );
