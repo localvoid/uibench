@@ -400,7 +400,7 @@ const state = {
       'url': 'https://github.com/dekujs/deku',
       'benchmarkUrl': 'https://localvoid.github.io/uibench-deku/',
       'bundleUrl': 'https://localvoid.github.io/uibench-deku/bundle.js',
-      'comments': 'Virtual DOM.',
+      'comments': 'Virtual DOM. Benchmark implementation doesn\'t support sCU optimization, doesn\'t have components/thunks overhead.',
       'size': 0
     },
     {
@@ -456,7 +456,7 @@ const state = {
       'url': 'https://github.com/maxogden/yo-yo',
       'benchmarkUrl': 'https://localvoid.github.io/uibench-yo-yo/',
       'bundleUrl': 'https://localvoid.github.io/uibench-yo-yo/main.js',
-      'comments': 'Real DOM diff/patch (`morphdom` library). Benchmark implementation doesn\'t support sCU optimization (doesn\'t have components/thunks overhead).',
+      'comments': 'Real DOM diff/patch (`morphdom` library). Benchmark implementation doesn\'t support sCU optimization, doesn\'t have components/thunks overhead.',
       'size': 0
     },
     {
@@ -472,7 +472,15 @@ const state = {
       'url': 'http://maquettejs.org/',
       'benchmarkUrl': 'https://localvoid.github.io/uibench-maquette/',
       'bundleUrl': 'https://localvoid.github.io/uibench-maquette/bundle.js',
-      'comments': 'Virtual DOM. Benchmark implementation doesn\'t support sCU optimization (doesn\'t have components/thunks overhead).',
+      'comments': 'Virtual DOM. Benchmark implementation doesn\'t support sCU optimization, doesn\'t have components/thunks overhead.',
+      'size': 0
+    },
+    {
+      'name': 'Vanilla [innerHTML]',
+      'url': 'https://github.com/localvoid/uibench-vanilla',
+      'benchmarkUrl': 'https://localvoid.github.io/uibench-vanilla/innerhtml.html',
+      'bundleUrl': 'https://localvoid.github.io/uibench-vanilla/innerhtml.js',
+      'comments': 'Benchmark implementation doesn\'t preserve internal state, doesn\'t support sCU optimization, doesn\'t have components/thunks overhead.',
       'size': 0
     }
   ],
