@@ -485,6 +485,14 @@ const state = {
       'bundleUrl': 'https://localvoid.github.io/uibench-vanilla/innerhtml.js',
       'comments': 'Benchmark implementation doesn\'t preserve internal state, doesn\'t support sCU optimization, doesn\'t have components/thunks overhead.',
       'size': 0
+    },
+    {
+      'name': 'Vidom',
+      'url': 'https://github.com/dfilatov/vidom',
+      'benchmarkUrl': 'https://dfilatov.github.io/uibench-vidom/',
+      'bundleUrl': 'https://dfilatov.github.io/uibench-vidom/bundle.js',
+      'comments': 'Virtual DOM.',
+      'size': 0
     }
   ],
   results: new Results()
