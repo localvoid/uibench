@@ -463,6 +463,14 @@ const state = {
       'size': 0
     },
     {
+      'name': 'yo-yo [nokeys]',
+      'url': 'https://github.com/maxogden/yo-yo',
+      'benchmarkUrl': 'https://localvoid.github.io/uibench-yo-yo/nokeys.html',
+      'bundleUrl': 'https://localvoid.github.io/uibench-yo-yo/nokeys.js',
+      'comments': 'Real DOM diff/patch (`morphdom` library). Benchmark implementation doesn\'t support sCU optimization, doesn\'t have components/thunks overhead, doesn\'t use keys to preserve internal state.',
+      'size': 0
+    },
+    {
       'name': 'Snabbdom',
       'url': 'https://github.com/paldepind/snabbdom',
       'benchmarkUrl': 'https://localvoid.github.io/uibench-snabbdom/',
