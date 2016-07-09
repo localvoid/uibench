@@ -487,14 +487,6 @@ const state = {
       'size': 0
     },
     {
-      'name': 'Vanilla [innerHTML]',
-      'url': 'https://github.com/localvoid/uibench-vanilla',
-      'benchmarkUrl': 'https://localvoid.github.io/uibench-vanilla/innerhtml.html',
-      'bundleUrl': 'https://localvoid.github.io/uibench-vanilla/innerhtml.js',
-      'comments': 'Benchmark implementation doesn\'t preserve internal state, doesn\'t support sCU optimization, doesn\'t have components/thunks overhead.',
-      'size': 0
-    },
-    {
       'name': 'Vidom',
       'url': 'https://github.com/dfilatov/vidom',
       'benchmarkUrl': 'https://dfilatov.github.io/uibench-vidom/',
@@ -510,6 +502,14 @@ const state = {
                     'https://cdnjs.cloudflare.com/ajax/libs/inferno/0.7.16/inferno.min.js',
                     'https://cdnjs.cloudflare.com/ajax/libs/inferno/0.7.16/inferno-dom.min.js'],
       'comments': 'Virtual DOM. Using DOM Nodes recycling by default.',
+      'size': 0
+    },
+    {
+      'name': 'Vanilla [innerHTML]',
+      'url': 'https://github.com/localvoid/uibench-vanilla',
+      'benchmarkUrl': 'https://localvoid.github.io/uibench-vanilla/innerhtml.html',
+      'bundleUrl': 'https://localvoid.github.io/uibench-vanilla/innerhtml.js',
+      'comments': 'Benchmark implementation doesn\'t preserve internal state, doesn\'t support sCU optimization, doesn\'t have components/thunks overhead.',
       'size': 0
     }
   ],
