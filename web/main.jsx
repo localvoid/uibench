@@ -501,17 +501,36 @@ const state = {
       'bundleUrl': 'https://dfilatov.github.io/uibench-vidom/bundle.js',
       'comments': 'Virtual DOM.',
       'size': 0
+    },
+    {
+      'name': 'Inferno',
+      'url': 'https://github.com/trueadm/inferno',
+      'benchmarkUrl': 'https://trueadm.github.io/uibench-inferno/',
+      'bundleUrl': ['https://trueadm.github.io/uibench-inferno/bundle.js',
+                    'https://cdnjs.cloudflare.com/ajax/libs/inferno/0.7.16/inferno.min.js',
+                    'https://cdnjs.cloudflare.com/ajax/libs/inferno/0.7.16/inferno-dom.min.js'],
+      'comments': 'Virtual DOM. Using DOM Nodes recycling by default.',
+      'size': 0
     }
   ],
   results: new Results()
 };
 
 function fetchBundleJs(contestant) {
-  return fetch(contestant.bundleUrl)
-    .then((response) => response.text())
-    .then((body) => {
-      contestant.size = body.length;
-    });
+  if (typeof contestant.bundleUrl === "string") {
+    return fetch(contestant.bundleUrl)
+      .then((response) => response.text())
+      .then((body) => {
+        contestant.size = body.length;
+      });
+  }
+  return Promise.all(contestant.bundleUrl.map((url) => {
+    return fetch(url)
+      .then((response) => response.text())
+      .then((body) => body.length);
+  })).then((sizes) => {
+    contestant.size = sizes.reduce((acc, v) => acc + v, 0);
+  });
 }
 
 document.addEventListener('DOMContentLoaded', function(e) {
