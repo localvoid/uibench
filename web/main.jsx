@@ -290,7 +290,7 @@ class Main extends React.Component {
       disableSCU: false,
       enableDOMRecycling: false,
       mobileMode: false,
-      iterations: 3,
+      iterations: 5,
       filter: '',
     };
 
