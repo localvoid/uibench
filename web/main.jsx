@@ -1,4 +1,3 @@
-import "whatwg-fetch";
 import React from 'react';
 import ReactDOM from 'react-dom';
 import uri from 'urijs';
@@ -54,7 +53,7 @@ class Header extends React.Component {
       <div className="jumbotron">
         <div className="container">
           <h1>UI Benchmark</h1>
-          <p>To start benchmarking, click on the "Open" button below library name that you want to test, it will
+          <p>To start benchmarking, click on a button below library name that you want to test, it will
             open a new window, perform tests and send results back to the main window, results will be displayed
             at the bottom section "Results".</p>
           <p>This benchmark measures how long it takes to perform update from one state to another, it doesn't
@@ -104,15 +103,20 @@ class Contestant extends React.Component {
     window.open(uri(this.props.benchmarkUrl).addQuery(_createQuery(this.props.opts)), '_blank');
   }
 
+  openGithubWindow(branch) {
+    window.open(uri(`https://cdn.rawgit.com/${this.props.github}/${branch}/dist/${this.props.page}`).addQuery(_createQuery(this.props.opts)), '_blank');
+  }
+
   render() {
-    const size = this.props.size === 0 ? null : <small>{this.props.size} bytes</small>;
+    const buttons = this.props.github === undefined ?
+      <button className="btn btn-default" onClick={this.openWindow}>master</button> :
+      this.props.branches.map((b) => <button className="btn btn-default" onClick={() => this.openGithubWindow(b)}>{b}</button>);
+
     return (
       <div className="list-group-item">
-        <h4 className="list-group-item-heading"><a href={this.props.url} target="_blank">{this.props.name}</a> {size}</h4>
+        <h4 className="list-group-item-heading"><a href={this.props.url} target="_blank">{this.props.name}</a></h4>
         <p><small>{this.props.comments}</small></p>
-        <div className="btn-group btn-group-xs">
-          <button className="btn btn-default" onClick={this.openWindow}>Open</button>
-        </div>
+        <div className="btn-group btn-group-xs">{buttons}</div>
       </div>
     );
   }
@@ -367,181 +371,123 @@ class Main extends React.Component {
 const state = {
   contestants: [
     {
-      'name': 'React 0.14',
+      'name': 'React',
       'url': 'https://facebook.github.io/react/',
-      'benchmarkUrl': 'https://cdn.rawgit.com/localvoid/uibench-react/0.14/dist/',
-      'bundleUrl': 'https://cdn.rawgit.com/localvoid/uibench-react/0.14/dist/main.js',
+      'github': 'localvoid/uibench-react',
+      'branches': ['0.14', '15', 'master'],
+      'page': 'index.html',
       'comments': 'Virtual DOM. Compiled with: es2015-loose, transform-react-inline-elements.',
-      'size': 0
     },
     {
-      'name': 'React 15',
+      'name': 'React [Functional Components]',
       'url': 'https://facebook.github.io/react/',
-      'benchmarkUrl': 'https://cdn.rawgit.com/localvoid/uibench-react/15/dist/',
-      'bundleUrl': 'https://cdn.rawgit.com/localvoid/uibench-react/15/dist/main.js',
-      'comments': 'Virtual DOM. Compiled with: es2015-loose, transform-react-inline-elements.',
-      'size': 0
-    },
-    {
-      'name': 'React 15 [Functional Components]',
-      'url': 'https://facebook.github.io/react/',
-      'benchmarkUrl': 'https://cdn.rawgit.com/localvoid/uibench-react/15/dist/fc.html',
-      'bundleUrl': 'https://cdn.rawgit.com/localvoid/uibench-react/15/dist/fc.js',
+      'github': 'localvoid/uibench-react',
+      'branches': ['0.14', '15', 'master'],
+      'page': 'fc.html',
       'comments': 'Virtual DOM. Benchmark implementation doesn\'t support sCU optimization. Compiled with: es2015-loose, transform-react-inline-elements.',
-      'size': 0
     },
     {
       'name': 'Bobril',
       'url': 'https://github.com/Bobris/Bobril',
       'benchmarkUrl': 'https://bobris.github.io/uibench-bobril/',
-      'bundleUrl': 'https://bobris.github.io/uibench-bobril/a.js',
       'comments': 'Virtual DOM.',
-      'size': 0
     },
     {
       'name': 'Deku',
       'url': 'https://github.com/dekujs/deku',
       'benchmarkUrl': 'https://localvoid.github.io/uibench-deku/',
-      'bundleUrl': 'https://localvoid.github.io/uibench-deku/bundle.js',
       'comments': 'Virtual DOM. Benchmark implementation doesn\'t support sCU optimization, doesn\'t have components/thunks overhead.',
-      'size': 0
     },
     {
       'name': 'Mercury',
       'url': 'https://github.com/Raynos/mercury',
       'benchmarkUrl': 'https://localvoid.github.io/uibench-mercury/',
-      'bundleUrl': 'https://localvoid.github.io/uibench-mercury/bundle.js',
       'comments': 'Virtual DOM (`virtual-dom` library).',
-      'size': 0
     },
     {
       'name': 'kivi [simple]',
       'url': 'https://github.com/localvoid/kivi',
-      'benchmarkUrl': 'https://cdn.rawgit.com/localvoid/uibench-kivi/master/dist/simple.html',
-      'bundleUrl': 'https://cdn.rawgit.com/localvoid/uibench-kivi/master/dist/simple.js',
+      'github': 'localvoid/uibench-kivi',
+      'branches': ['master'],
+      'page': 'simple.html',
       'comments': 'Virtual DOM, simple benchmark implementation without any advanced optimizations.',
-      'size': 0
     },
     {
       'name': 'kivi [advanced]',
       'url': 'https://github.com/localvoid/kivi',
-      'benchmarkUrl': 'https://cdn.rawgit.com/localvoid/uibench-kivi/master/dist/advanced.html',
-      'bundleUrl': 'https://cdn.rawgit.com/localvoid/uibench-kivi/master/dist/advanced.js',
+      'github': 'localvoid/uibench-kivi',
+      'branches': ['master'],
+      'page': 'advanced.html',
       'comments': 'Virtual DOM, benchmark implementation is using all optimizations that available in kivi API, except for DOM Nodes recycling.',
-      'size': 0
     },
     {
       'name': 'Preact',
       'url': 'https://github.com/developit/preact',
       'benchmarkUrl': 'https://developit.github.io/uibench-preact/',
-      'bundleUrl': 'https://developit.github.io/uibench-preact/bundle.js',
       'comments': 'Virtual DOM. Using DOM Nodes recycling by default.',
-      'size': 0
     },
     {
       'name': 'React-lite',
       'url': 'https://github.com/Lucifier129/react-lite',
       'benchmarkUrl': 'https://localvoid.github.io/uibench-react-lite/',
-      'bundleUrl': 'https://localvoid.github.io/uibench-react-lite/bundle.js',
       'comments': 'Virtual DOM.',
-      'size': 0
     },
     {
       'name': 'Imba',
       'url': 'https://github.com/somebee/imba',
       'benchmarkUrl': 'https://somebee.github.io/uibench-imba/',
-      'bundleUrl': 'https://somebee.github.io/uibench-imba/bundle.js',
       'comments': 'Programming language with UI library that has Virtual DOM like API. Using DOM Nodes recycling by default.',
-      'size': 0
     },
     {
       'name': 'yo-yo',
       'url': 'https://github.com/maxogden/yo-yo',
       'benchmarkUrl': 'https://localvoid.github.io/uibench-yo-yo/',
-      'bundleUrl': 'https://localvoid.github.io/uibench-yo-yo/main.js',
       'comments': 'Real DOM diff/patch (`morphdom` library). Benchmark implementation doesn\'t support sCU optimization, doesn\'t have components/thunks overhead.',
-      'size': 0
     },
     {
       'name': 'yo-yo [nokeys]',
       'url': 'https://github.com/maxogden/yo-yo',
       'benchmarkUrl': 'https://localvoid.github.io/uibench-yo-yo/nokeys.html',
-      'bundleUrl': 'https://localvoid.github.io/uibench-yo-yo/nokeys.js',
       'comments': 'Real DOM diff/patch (`morphdom` library). Benchmark implementation doesn\'t support sCU optimization, doesn\'t have components/thunks overhead, doesn\'t use keys to preserve internal state.',
-      'size': 0
     },
     {
       'name': 'Snabbdom',
       'url': 'https://github.com/paldepind/snabbdom',
       'benchmarkUrl': 'https://localvoid.github.io/uibench-snabbdom/',
-      'bundleUrl': 'https://localvoid.github.io/uibench-snabbdom/bundle.js',
       'comments': 'Virtual DOM.',
-      'size': 0
     },
     {
       'name': 'Maquette',
       'url': 'http://maquettejs.org/',
       'benchmarkUrl': 'https://localvoid.github.io/uibench-maquette/',
-      'bundleUrl': 'https://localvoid.github.io/uibench-maquette/bundle.js',
       'comments': 'Virtual DOM. Benchmark implementation doesn\'t support sCU optimization, doesn\'t have components/thunks overhead.',
-      'size': 0
     },
     {
       'name': 'Vidom',
       'url': 'https://github.com/dfilatov/vidom',
       'benchmarkUrl': 'https://dfilatov.github.io/uibench-vidom/',
-      'bundleUrl': 'https://dfilatov.github.io/uibench-vidom/bundle.js',
       'comments': 'Virtual DOM.',
-      'size': 0
     },
     {
       'name': 'Inferno',
       'url': 'https://github.com/trueadm/inferno',
-      'benchmarkUrl': 'https://cdn.rawgit.com/trueadm/uibench-inferno/master/dist/',
-      'bundleUrl': ['https://cdn.rawgit.com/trueadm/uibench-inferno/master/dist/bundle.js',
-                    'https://cdnjs.cloudflare.com/ajax/libs/inferno/0.7.16/inferno.min.js',
-                    'https://cdnjs.cloudflare.com/ajax/libs/inferno/0.7.16/inferno-dom.min.js'],
+      'github': 'trueadm/uibench-inferno',
+      'branches': ['master'],
+      'page': 'index.html',
       'comments': 'Virtual DOM. Using DOM Nodes recycling by default.',
-      'size': 0
     },
     {
       'name': 'Vanilla [innerHTML]',
       'url': 'https://github.com/localvoid/uibench-vanilla',
       'benchmarkUrl': 'https://localvoid.github.io/uibench-vanilla/innerhtml.html',
-      'bundleUrl': 'https://localvoid.github.io/uibench-vanilla/innerhtml.js',
       'comments': 'Benchmark implementation doesn\'t preserve internal state, doesn\'t support sCU optimization, doesn\'t have components/thunks overhead.',
-      'size': 0
     }
   ],
   results: new Results()
 };
 
-function fetchBundleJs(contestant) {
-  if (typeof contestant.bundleUrl === "string") {
-    return fetch(contestant.bundleUrl)
-      .then((response) => response.text())
-      .then((body) => {
-        contestant.size = body.length;
-      });
-  }
-  return Promise.all(contestant.bundleUrl.map((url) => {
-    return fetch(url)
-      .then((response) => response.text())
-      .then((body) => body.length);
-  })).then((sizes) => {
-    contestant.size = sizes.reduce((acc, v) => acc + v, 0);
-  });
-}
-
 document.addEventListener('DOMContentLoaded', function(e) {
   const container = document.querySelector('#App');
-
-  for (let i = 0; i < state.contestants.length; i++) {
-    fetchBundleJs(state.contestants[i])
-      .then(() => {
-        ReactDOM.render(<Main {...state}/>, container);
-      });
-  }
 
   window.addEventListener('message', function(e) {
     const type = e.data.type;
