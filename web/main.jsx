@@ -417,16 +417,16 @@ const state = {
     {
       'name': 'kivi [simple]',
       'url': 'https://github.com/localvoid/kivi',
-      'benchmarkUrl': 'https://localvoid.github.io/uibench-kivi/simple.html',
-      'bundleUrl': 'https://localvoid.github.io/uibench-kivi/simple.js',
+      'benchmarkUrl': 'https://cdn.rawgit.com/localvoid/uibench-kivi/master/dist/simple.html',
+      'bundleUrl': 'https://cdn.rawgit.com/localvoid/uibench-kivi/master/dist/simple.js',
       'comments': 'Virtual DOM, simple benchmark implementation without any advanced optimizations.',
       'size': 0
     },
     {
       'name': 'kivi [advanced]',
       'url': 'https://github.com/localvoid/kivi',
-      'benchmarkUrl': 'https://localvoid.github.io/uibench-kivi/advanced.html',
-      'bundleUrl': 'https://localvoid.github.io/uibench-kivi/advanced.js',
+      'benchmarkUrl': 'https://cdn.rawgit.com/localvoid/uibench-kivi/master/dist/advanced.html',
+      'bundleUrl': 'https://cdn.rawgit.com/localvoid/uibench-kivi/master/dist/advanced.js',
       'comments': 'Virtual DOM, benchmark implementation is using all optimizations that available in kivi API, except for DOM Nodes recycling.',
       'size': 0
     },
