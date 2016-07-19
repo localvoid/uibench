@@ -369,24 +369,24 @@ const state = {
     {
       'name': 'React 0.14',
       'url': 'https://facebook.github.io/react/',
-      'benchmarkUrl': 'https://localvoid.github.io/uibench-react/',
-      'bundleUrl': 'https://localvoid.github.io/uibench-react/bundle.js',
-      'comments': 'Virtual DOM.',
+      'benchmarkUrl': 'https://cdn.rawgit.com/localvoid/uibench-react/0.14/dist/',
+      'bundleUrl': 'https://cdn.rawgit.com/localvoid/uibench-react/0.14/dist/main.js',
+      'comments': 'Virtual DOM. Compiled with: es2015-loose, transform-react-inline-elements.',
       'size': 0
     },
     {
       'name': 'React 15',
       'url': 'https://facebook.github.io/react/',
-      'benchmarkUrl': 'https://localvoid.github.io/uibench-react-dev/',
-      'bundleUrl': 'https://localvoid.github.io/uibench-react-dev/bundle.js',
+      'benchmarkUrl': 'https://cdn.rawgit.com/localvoid/uibench-react/15/dist/',
+      'bundleUrl': 'https://cdn.rawgit.com/localvoid/uibench-react/15/dist/main.js',
       'comments': 'Virtual DOM. Compiled with: es2015-loose, transform-react-inline-elements.',
       'size': 0
     },
     {
       'name': 'React 15 [Functional Components]',
       'url': 'https://facebook.github.io/react/',
-      'benchmarkUrl': 'https://localvoid.github.io/uibench-react-dev/fc.html',
-      'bundleUrl': 'https://localvoid.github.io/uibench-react-dev/fc_bundle.js',
+      'benchmarkUrl': 'https://cdn.rawgit.com/localvoid/uibench-react/15/dist/fc.html',
+      'bundleUrl': 'https://cdn.rawgit.com/localvoid/uibench-react/15/dist/fc.js',
       'comments': 'Virtual DOM. Benchmark implementation doesn\'t support sCU optimization. Compiled with: es2015-loose, transform-react-inline-elements.',
       'size': 0
     },
