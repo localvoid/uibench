@@ -498,7 +498,7 @@ const state = {
       'name': 'Inferno',
       'url': 'https://github.com/trueadm/inferno',
       'benchmarkUrl': 'https://cdn.rawgit.com/trueadm/uibench-inferno/master/dist/',
-      'bundleUrl': ['https://trueadm.github.io/uibench-inferno/bundle.js',
+      'bundleUrl': ['https://cdn.rawgit.com/trueadm/uibench-inferno/master/dist/bundle.js',
                     'https://cdnjs.cloudflare.com/ajax/libs/inferno/0.7.16/inferno.min.js',
                     'https://cdnjs.cloudflare.com/ajax/libs/inferno/0.7.16/inferno-dom.min.js'],
       'comments': 'Virtual DOM. Using DOM Nodes recycling by default.',
