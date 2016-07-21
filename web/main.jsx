@@ -103,14 +103,14 @@ class Contestant extends React.Component {
     window.open(uri(this.props.benchmarkUrl).addQuery(_createQuery(this.props.opts)), '_blank');
   }
 
-  openGithubWindow(branch) {
-    window.open(uri(`https://cdn.rawgit.com/${this.props.github}/${branch}/dist/${this.props.page}`).addQuery(_createQuery(this.props.opts)), '_blank');
+  openVersionWindow(version) {
+    window.open(uri(this.props.benchmarkUrl + version + '/' + this.props.page).addQuery(_createQuery(this.props.opts)), '_blank');
   }
 
   render() {
-    const buttons = this.props.github === undefined ?
-      <button className="btn btn-default" onClick={this.openWindow}>master</button> :
-      this.props.branches.map((b) => <button className="btn btn-default" onClick={() => this.openGithubWindow(b)}>{b}</button>);
+    const buttons = this.props.versions === undefined ?
+      <button className="btn btn-default" onClick={this.openWindow}>stable</button> :
+      this.props.versions.map((v) => <button className="btn btn-default" onClick={() => this.openVersionWindow(v)}>{v}</button>);
 
     return (
       <div className="list-group-item">
@@ -373,26 +373,26 @@ const state = {
     {
       'name': 'React',
       'url': 'https://facebook.github.io/react/',
-      'github': 'localvoid/uibench-react',
-      'branches': ['0.14', '15', 'master'],
+      'benchmarkUrl': 'https://localvoid.github.io/uibench-react/',
+      'versions': ['14', '15', 'dev'],
       'page': 'index.html',
       'comments': 'Virtual DOM. Compiled with: es2015-loose, transform-react-inline-elements.',
     },
     {
       'name': 'React [Functional Components]',
       'url': 'https://facebook.github.io/react/',
-      'github': 'localvoid/uibench-react',
-      'branches': ['0.14', '15', 'master'],
+      'benchmarkUrl': 'https://localvoid.github.io/uibench-react/',
+      'versions': ['14', '15', 'dev'],
       'page': 'fc.html',
       'comments': 'Virtual DOM. Benchmark implementation doesn\'t support sCU optimization. Compiled with: es2015-loose, transform-react-inline-elements.',
     },
     {
       'name': 'React [Pure Components]',
       'url': 'https://facebook.github.io/react/',
-      'github': 'localvoid/uibench-react',
-      'branches': ['master'],
+      'benchmarkUrl': 'https://localvoid.github.io/uibench-react/',
+      'versions': ['dev'],
       'page': 'pc.html',
-      'comments': 'Virtual DOM. Compiled with: es2015-loose, transform-react-inline-elements. Components extended from `React.PureComponent`.',
+      'comments': 'Virtual DOM. Components extended from `React.PureComponent`. Compiled with: es2015-loose, transform-react-inline-elements.',
     },
     {
       'name': 'Bobril',
@@ -415,17 +415,13 @@ const state = {
     {
       'name': 'kivi [simple]',
       'url': 'https://github.com/localvoid/kivi',
-      'github': 'localvoid/uibench-kivi',
-      'branches': ['master'],
-      'page': 'simple.html',
+      'benchmarkUrl': 'https://localvoid.github.io/uibench-kivi/simple.html',
       'comments': 'Virtual DOM, simple benchmark implementation without any advanced optimizations.',
     },
     {
       'name': 'kivi [advanced]',
       'url': 'https://github.com/localvoid/kivi',
-      'github': 'localvoid/uibench-kivi',
-      'branches': ['master'],
-      'page': 'advanced.html',
+      'benchmarkUrl': 'https://localvoid.github.io/uibench-kivi/advanced.html',
       'comments': 'Virtual DOM, benchmark implementation is using all optimizations that available in kivi API, except for DOM Nodes recycling.',
     },
     {
@@ -479,9 +475,7 @@ const state = {
     {
       'name': 'Inferno',
       'url': 'https://github.com/trueadm/inferno',
-      'github': 'trueadm/uibench-inferno',
-      'branches': ['master'],
-      'page': 'index.html',
+      'benchmarkUrl': 'https://trueadm.github.io/uibench-inferno/',
       'comments': 'Virtual DOM. Using DOM Nodes recycling by default.',
     },
     {
