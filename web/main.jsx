@@ -415,13 +415,17 @@ const state = {
     {
       'name': 'kivi [simple]',
       'url': 'https://github.com/localvoid/kivi',
-      'benchmarkUrl': 'https://localvoid.github.io/uibench-kivi/simple.html',
+      'benchmarkUrl': 'https://localvoid.github.io/uibench-kivi/',
+      'versions': ['0.10', 'dev'],
+      'page': 'simple.html',
       'comments': 'Virtual DOM, simple benchmark implementation without any advanced optimizations.',
     },
     {
       'name': 'kivi [advanced]',
       'url': 'https://github.com/localvoid/kivi',
-      'benchmarkUrl': 'https://localvoid.github.io/uibench-kivi/advanced.html',
+      'benchmarkUrl': 'https://localvoid.github.io/uibench-kivi/',
+      'versions': ['0.10', 'dev'],
+      'page': 'advanced.html',
       'comments': 'Virtual DOM, benchmark implementation is using all optimizations that available in kivi API, except for DOM Nodes recycling.',
     },
     {
@@ -476,7 +480,7 @@ const state = {
       'name': 'Inferno',
       'url': 'https://github.com/trueadm/inferno',
       'benchmarkUrl': 'https://trueadm.github.io/uibench-inferno/',
-      'versions': ['0.7'],
+      'versions': ['0.7', 'dev'],
       'page': 'index.html',
       'comments': 'Virtual DOM. Using DOM Nodes recycling by default.',
     },
