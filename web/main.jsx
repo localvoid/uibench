@@ -351,12 +351,12 @@ class Main extends React.Component {
                   Disable <code>shouldComponentUpdate</code> optimization
                 </label>
               </div>
-              <div className="checkbox">
-                <label>
-                  <input type="checkbox" value={this.state.enableDOMRecycling} onChange={this.onEnableDOMRecyclingChange} />
-                  Enable DOM recycling (if implementation supports changing)
-                </label>
-              </div>
+              // <div className="checkbox">
+              //   <label>
+              //     <input type="checkbox" value={this.state.enableDOMRecycling} onChange={this.onEnableDOMRecyclingChange} />
+              //     Enable DOM recycling (if implementation supports changing)
+              //   </label>
+              // </div>
               <div className="checkbox">
                 <label>
                   <input type="checkbox" value={this.state.mobileMode} onChange={this.onMobileModeChange} />
