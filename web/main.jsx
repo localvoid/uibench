@@ -56,8 +56,6 @@ class Header extends React.Component {
           <p>To start benchmarking, click on a button below library name that you want to test, it will
             open a new window, perform tests and send results back to the main window, results will be displayed
             at the bottom section "Results".</p>
-          <p>This benchmark measures how long it takes to perform update from one state to another, it doesn't
-            measure how long will take paint/layout/composition phases, just js part.</p>
           <p>In the "Results" section there will be different test cases, for example test
             case <code>table/[100,4]/render</code> represents update from empty table to table with 100 rows and 4
             columns. Test case <code>table/[100,4]/filter/32</code> is an update from table with 100 rows and 4
@@ -88,6 +86,9 @@ function _createQuery(opts) {
   }
   if (opts.testFilter) {
     q.filter = opts.testFilter;
+  }
+  if (opts.fullRenderTime) {
+    q.fullRenderTime = true;
   }
 
   return q;
@@ -263,10 +264,10 @@ class ResultsTable extends React.Component {
         <div className="panel-body">
           <h4>Flags:</h4>
           <ul>
-            <li><strong>+r</strong> means that library is using DOM recycling, and instead of creating new DOM nodes
+            <li><strong>+r</strong> - DOM recycling is enabled, instead of creating new DOM nodes
               on each update, it reuses them, so it breaks test cases like "render" and "insert".</li>
-            <li><strong>+s</strong> means that library is using
-              <code>shouldComponentUpdate</code> optimization.</li>
+            <li><strong>+s</strong> - <code>shouldComponentUpdate</code> optimization is enabled.</li>
+            <li><strong>+f</strong> - full render time measurement (recalc style/layout/paint/composition/etc).</li>
           </ul>
           <p>Don't use <u>Overall time</u> row to make any conclusions, like library X is N times faster than
             library Y. This row is used by library developers to easily check if there is some regression.</p>
@@ -291,6 +292,7 @@ class Main extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      fullRenderTime: false,
       disableSCU: false,
       enableDOMRecycling: false,
       mobileMode: false,
@@ -298,11 +300,16 @@ class Main extends React.Component {
       filter: '',
     };
 
+    this.onFullRenderTimeChange = this.onFullRenderTimeChange.bind(this);
     this.onMobileModeChange = this.onMobileModeChange.bind(this);
     this.onDisableSCUChange = this.onDisableSCUChange.bind(this);
     this.onEnableDOMRecyclingChange = this.onEnableDOMRecyclingChange.bind(this);
     this.onIterationsChange = this.onIterationsChange.bind(this);
     this.onTestFilterChange = this.onTestFilterChange.bind(this);
+  }
+
+  onFullRenderTimeChange(e) {
+    this.setState({fullRenderTime: e.target.checked});
   }
 
   onMobileModeChange(e) {
@@ -332,6 +339,12 @@ class Main extends React.Component {
         <div className="container">
           <div className="panel panel-default">
             <div className="panel-body">
+              <div className="checkbox">
+                <label>
+                  <input type="checkbox" value={this.state.fullRenderTime} onChange={this.onFullRenderTimeChange} />
+                  Enable full render time measurements (recalc style/layout/paint/composition/etc)
+                </label>
+              </div>
               <div className="checkbox">
                 <label>
                   <input type="checkbox" value={this.state.disableSCU} onChange={this.onDisableSCUChange} />
