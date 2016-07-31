@@ -354,7 +354,7 @@ class Main extends React.Component {
               <div className="checkbox">
                 <label>
                   <input type="checkbox" value={this.state.mobileMode} onChange={this.onMobileModeChange} />
-                  Mobile mode
+                  Mobile mode (reduces number of DOM elements in tests)
                 </label>
               </div>
               <div className="form-group">
