@@ -15,10 +15,12 @@ function stdev(items) {
   return Math.sqrt(variance);
 }
 
-function Report(name, version, samples) {
+function Report(name, version, timings, memory, samples) {
   this.name = name;
   this.version = version;
   this.samples = samples;
+  this.timings = timings;
+  this.memory = memory;
 }
 
 class Results {
@@ -28,8 +30,8 @@ class Results {
     this.sampleNamesIndex = {};
   }
 
-  update(name, version, samples) {
-    this.reports.push(new Report(name, version, samples));
+  update(name, version, timings, memory, samples) {
+    this.reports.push(new Report(name, version, timings, memory, samples));
 
     const keys = Object.keys(samples);
     for (let i = 0; i < keys.length; i++) {
@@ -269,16 +271,22 @@ class ResultsTable extends React.Component {
             <li><strong>+s</strong> - <code>shouldComponentUpdate</code> optimization is enabled.</li>
             <li><strong>+f</strong> - full render time measurement (recalc style/layout/paint/composition/etc).</li>
           </ul>
-          <p>Don't use <u>Overall time</u> row to make any conclusions, like library X is N times faster than
+          <h4>Notes:</h4>
+          <p>Don't use <u>Overall Tests Time</u> row to make any conclusions, like library X is N times faster than
             library Y. This row is used by library developers to easily check if there is some regression.</p>
+          <p>JS Init Time is hugely depends on scripts downloading time, run benchmark multiple time to make sure that scripts are available in a browser cache.</p>
           <div className="input-group">
             <span className="input-group-addon">Filter</span>
             <input type="text" className="form-control" placeholder="For example: render" value={filter} onChange={this.handleFilterChange.bind(this)} />
           </div>
           <table className="table table-condensed">
-            <thead><tr><th key="empty"></th>{titles}</tr></thead>
+            <thead><tr><th></th>{titles}</tr></thead>
             <tbody>
-            <tr><td key="empty">Overall Time</td>{overallTime.map((t) => <td>{t}</td>)}</tr>
+            <tr><td>Start JS Heap Size</td>{reports.map((r) => <td>{r.memory.start}</td>)}</tr>
+            <tr><td>Max JS Heap Size</td>{reports.map((r) => <td>{r.memory.max}</td>)}</tr>
+            <tr><td>JS Init Time</td>{reports.map((r) => <td>{Math.round((r.timings.run - r.timings.start) * 1000)}</td>)}</tr>
+            <tr><td>First Render Time</td>{reports.map((r) => <td>{Math.round(r.timings.firstRender * 1000)}</td>)}</tr>
+            <tr><td>Overall Tests Time</td>{overallTime.map((t) => <td>{t}</td>)}</tr>
             {rows}
             </tbody>
           </table>
@@ -509,7 +517,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
     const data = e.data.data;
 
     if (type === 'report') {
-      state.results.update(data.name, data.version, data.samples);
+      state.results.update(data.name, data.version, data.timings, data.memory, data.samples);
       ReactDOM.render(<Main {...state}/>, container);
     }
   });
