@@ -4,7 +4,7 @@
 
 ## Reports
 
-- [Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2837.0 Safari/537.36](https://cdn.rawgit.com/localvoid/uibench/9385f65cec457f9c64bdf7675801dc2b515dd67b/reports/uibench_Mozilla-5.0%20(X11%3B%20Linux%20x86_64)%20AppleWebKit-537.36%20(KHTML%2C%20like%20Gecko)%20Chrome-54.0.2837.0%20Safari-537.36.html)
+- [Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2837.0 Safari/537.36](https://cdn.rawgit.com/localvoid/uibench/master/reports/uibench_Mozilla-5.0%20(X11%3B%20Linux%20x86_64)%20AppleWebKit-537.36%20(KHTML%2C%20like%20Gecko)%20Chrome-54.0.2837.0%20Safari-537.36.html)
 
 ## Benchmark implementations query parameters
 
