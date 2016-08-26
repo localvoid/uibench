@@ -110,7 +110,7 @@ function generateHtmlReport(results) {
                       `max: ${Math.round(value.max * 1000).toString()}`;
 
         const diff = results.diff[j] ? ` <small>(${(results.diff[j]).toFixed(2)})</small>` : '';
-        cols.push(`<td title=${title} style=${style}>${Math.round(value.median * 1000) }${diff}</td>`);
+        cols.push(`<td title="${title}" style="${style}">${Math.round(value.median * 1000) }${diff}</td>`);
 
         overallTime[j] += Math.round(value.median * 1000);
       }
