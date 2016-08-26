@@ -129,6 +129,7 @@ function generateHtmlReport(results) {
             <tbody>
             <tr><td colspan="${reports.length + 1}"><b>Flags:</b></td></tr>
             <tr><td>Measure Full Render Time</td>${fullRenderFlags}</tr>
+            <tr><td>Preserve State</td>${preserveStateFlags}</tr>
             <tr><td>sCU Optimization</td>${scuFlags}</tr>
             <tr><td>DOM Recycling</td>${recyclingFlags}</tr>
             <tr><td>Spec Tests</td>${disableChecksFlags}</tr>
@@ -143,6 +144,7 @@ function generateHtmlReport(results) {
           <h4>Flags:</h4>
           <ul>
             <li><strong>Measure Full Render Time</strong> - full render time measurement (recalc style/layout/paint/composition/etc).</li>
+            <li><strong>Preserve State</strong> - preserves internal state when moving DOM nodes.</li>
             <li><strong>DOM Recycling</strong> - DOM recycling is enabled, instead of creating new DOM nodes
               on each update, it reuses them, so it breaks test cases like "render" and "insert".</li>
             <li><strong>sCU Optimization</strong> - <code>shouldComponentUpdate</code> optimization is enabled.</li>
