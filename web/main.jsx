@@ -53,10 +53,11 @@ function generateHtmlReport(results) {
   let body = '';
 
   const titles = reports.map((r) => `<th>${r.name} <small>${r.version}</small></th>`).join('');
-  const fullRenderFlags = reports.map((r) => `<td${r.flags.fullRenderTime ? ` style="background:${GreenColor}"` : ""}></td>`).join('');
-  const scuFlags = reports.map((r) => `<td${r.flags.scu ? ` style="background:${GreenColor}"` : ""}></td>`).join('');
-  const recyclingFlags = reports.map((r) => `<td${r.flags.recycling ? ` style="background:${RedColor}"` : ""}></td>`).join('');
-  const disableChecksFlags = reports.map((r) => `<td${r.flags.disableChecks ? ` style="background:${RedColor}"` : ""}></td>`).join('');
+  const fullRenderFlags = reports.map((r) => `<td style="background:${r.flags.fullRenderTime ? GreenColor : RedColor}"></td>`).join('');
+  const preserveStateFlags = reports.map((r) => `<td style="background:${r.flags.preserveState ? GreenColor : RedColor}"></td>`).join('');
+  const scuFlags = reports.map((r) => `<td style="background:${r.flags.scu ? GreenColor : RedColor}"></td>`).join('');
+  const recyclingFlags = reports.map((r) => `<td style="background:${r.flags.recycling ? GreenColor : RedColor}"></td>`).join('');
+  const disableChecksFlags = reports.map((r) => `<td style="background:${r.flags.disableChecks ? RedColor : GreenColor}"></td>`).join('');
 
   const jsInitTimes = processResults(reports.map((r) => r.times.run - r.times.start));
   const firstRenderTimes = processResults(reports.map((r) => r.times.firstRender));
@@ -130,7 +131,7 @@ function generateHtmlReport(results) {
             <tr><td>Measure Full Render Time</td>${fullRenderFlags}</tr>
             <tr><td>sCU Optimization</td>${scuFlags}</tr>
             <tr><td>DOM Recycling</td>${recyclingFlags}</tr>
-            <tr><td>Disabled Checks</td>${disableChecksFlags}</tr>
+            <tr><td>Spec Tests</td>${disableChecksFlags}</tr>
             <tr><td colSpan="${reports.length + 1}"><b>Times:</b></td></tr>
             <tr><td>JS Init Time</td>${jsInitCols.join('')}</tr>
             <tr><td>First Render Time</td>${firstRenderCols.join('')}</tr>
@@ -145,12 +146,11 @@ function generateHtmlReport(results) {
             <li><strong>DOM Recycling</strong> - DOM recycling is enabled, instead of creating new DOM nodes
               on each update, it reuses them, so it breaks test cases like "render" and "insert".</li>
             <li><strong>sCU Optimization</strong> - <code>shouldComponentUpdate</code> optimization is enabled.</li>
-            <li><strong>Disabled Checks</strong> - Internal specification tests are disabled.</li>
+            <li><strong>Spec Tests</strong> - Internal specification tests.</li>
           </ul>
           <h4>Notes:</h4>
           <p>Don't use <u>Overall Tests Time</u> row to make any conclusions, like library X is N times faster than
             library Y. This row is used by library developers to easily check if there is some regression.</p>
-          <p>JS Init Time is hugely depends on scripts downloading time, run benchmark multiple time to make sure that scripts are available in a browser cache.</p>
         </div>
       </div>
   `;
@@ -350,10 +350,11 @@ class ResultsTable extends React.Component {
     }
 
     const titles = reports.map((r) => <th>{r.name} <small>{r.version}</small></th>);
-    const fullRenderFlags = reports.map((r) => <td style={{background: r.flags.fullRenderTime ? GreenColor : null}}></td>);
-    const scuFlags = reports.map((r) => <td style={{background: r.flags.scu ? GreenColor : null}}></td>);
-    const recyclingFlags = reports.map((r) => <td style={{background: r.flags.recycling ? RedColor : null}}></td>);
-    const disableChecksFlags = reports.map((r) => <td style={{background: r.flags.disableChecks ? RedColor : null}}></td>);
+    const fullRenderFlags = reports.map((r) => <td style={{background: r.flags.fullRenderTime ? GreenColor : RedColor}}></td>);
+    const preserveStateFlags = reports.map((r) => <td style={{background: r.flags.preserveState ? GreenColor : RedColor}}></td>);
+    const scuFlags = reports.map((r) => <td style={{background: r.flags.scu ? GreenColor : RedColor}}></td>);
+    const recyclingFlags = reports.map((r) => <td style={{background: r.flags.recycling ? GreenColor : RedColor}}></td>);
+    const disableChecksFlags = reports.map((r) => <td style={{background: r.flags.disableChecks ? RedColor : GreenColor}}></td>);
     const iterations = reports.map((r) => <td>{r.iterations}</td>);
 
     const jsInitTimes = processResults(reports.map((r) => r.times.run - r.times.start));
@@ -430,10 +431,11 @@ class ResultsTable extends React.Component {
           <h4>Flags:</h4>
           <ul>
             <li><strong>Measure Full Render Time</strong> - full render time measurement (recalc style/layout/paint/composition/etc).</li>
+            <li><strong>Preserve State</strong> - preserves internal state when moving DOM nodes.</li>
             <li><strong>DOM Recycling</strong> - DOM recycling is enabled, instead of creating new DOM nodes
               on each update, it reuses them, so it breaks test cases like "render" and "insert".</li>
             <li><strong>sCU Optimization</strong> - <code>shouldComponentUpdate</code> optimization is enabled.</li>
-            <li><strong>Disabled Checks</strong> - Internal specification tests are disabled.</li>
+            <li><strong>Spec Tests</strong> - Internal specification tests.</li>
           </ul>
           <h4>Notes:</h4>
           <p>Don't use <u>Overall Tests Time</u> row to make any conclusions, like library X is N times faster than
@@ -448,9 +450,10 @@ class ResultsTable extends React.Component {
             <tbody>
             <tr><td colSpan={reports.length + 1}><b>Flags:</b></td></tr>
             <tr><td>Measure Full Render Time</td>{fullRenderFlags}</tr>
+            <tr><td>Preserve State</td>{preserveStateFlags}</tr>
             <tr><td>sCU Optimization</td>{scuFlags}</tr>
             <tr><td>DOM Recycling</td>{recyclingFlags}</tr>
-            <tr><td>Disabled Checks</td>{disableChecksFlags}</tr>
+            <tr><td>Spec Tests</td>{disableChecksFlags}</tr>
             <tr><td colSpan={reports.length + 1}><b>Times:</b></td></tr>
             <tr><td>JS Init Time</td>{jsInitCols}</tr>
             <tr><td>First Render Time</td>{firstRenderCols}</tr>
