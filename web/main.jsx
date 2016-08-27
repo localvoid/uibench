@@ -59,8 +59,8 @@ function generateHtmlReport(results) {
   const recyclingFlags = reports.map((r) => `<td style="background:${r.flags.recycling ? GreenColor : RedColor}"></td>`).join('');
   const disableChecksFlags = reports.map((r) => `<td style="background:${r.flags.disableChecks ? RedColor : GreenColor}"></td>`).join('');
 
-  const jsInitTimes = processResults(reports.map((r) => r.times.run - r.times.start));
-  const firstRenderTimes = processResults(reports.map((r) => r.times.firstRender));
+  const jsInitTimes = processResults(reports.map((r) => r.timing.run - r.timing.start));
+  const firstRenderTimes = processResults(reports.map((r) => r.timing.firstRender));
   const jsInitCols = [];
   const firstRenderCols = [];
 
@@ -146,7 +146,7 @@ function generateHtmlReport(results) {
             <li><strong>Measure Full Render Time</strong> - full render time measurement (recalc style/layout/paint/composition/etc).</li>
             <li><strong>Preserve State</strong> - preserves internal state when moving DOM nodes.</li>
             <li><strong>DOM Recycling</strong> - DOM recycling is enabled, instead of creating new DOM nodes
-              on each update, it reuses them, so it breaks test cases like "render" and "insert".</li>
+              on each update, it reuses them.</li>
             <li><strong>sCU Optimization</strong> - <code>shouldComponentUpdate</code> optimization is enabled.</li>
             <li><strong>Spec Tests</strong> - Internal specification tests.</li>
           </ul>
@@ -183,7 +183,7 @@ class Results {
 }
 
 class Header extends React.Component {
-  shouldComponentUpdate(nextProps, nextState) {
+  shouldComponentUpdate() {
     return false;
   }
 
@@ -234,9 +234,8 @@ function _createQuery(opts) {
 }
 
 class Contestant extends React.Component {
-  constructor(props) {
-    super(props);
-    this.openWindow = this.openWindow.bind(this);
+  shouldComponentUpdate() {
+    return false;
   }
 
   openWindow(e) {
@@ -249,7 +248,7 @@ class Contestant extends React.Component {
 
   render() {
     const buttons = this.props.versions === undefined ?
-      <button className="btn btn-default" onClick={this.openWindow}>stable</button> :
+      <button className="btn btn-default" onClick={this.openWindow.bind(this)}>stable</button> :
       this.props.versions.map((v) => <button className="btn btn-default" onClick={() => this.openVersionWindow(v)}>{v}</button>);
 
     return (
@@ -359,8 +358,8 @@ class ResultsTable extends React.Component {
     const disableChecksFlags = reports.map((r) => <td style={{background: r.flags.disableChecks ? RedColor : GreenColor}}></td>);
     const iterations = reports.map((r) => <td>{r.iterations}</td>);
 
-    const jsInitTimes = processResults(reports.map((r) => r.times.run - r.times.start));
-    const firstRenderTimes = processResults(reports.map((r) => r.times.firstRender));
+    const jsInitTimes = processResults(reports.map((r) => r.timing.run - r.timing.start));
+    const firstRenderTimes = processResults(reports.map((r) => r.timing.firstRender));
     const jsInitCols = [];
     const firstRenderCols = [];
 
@@ -435,7 +434,7 @@ class ResultsTable extends React.Component {
             <li><strong>Measure Full Render Time</strong> - full render time measurement (recalc style/layout/paint/composition/etc).</li>
             <li><strong>Preserve State</strong> - preserves internal state when moving DOM nodes.</li>
             <li><strong>DOM Recycling</strong> - DOM recycling is enabled, instead of creating new DOM nodes
-              on each update, it reuses them, so it breaks test cases like "render" and "insert".</li>
+              on each update, it reuses them.</li>
             <li><strong>sCU Optimization</strong> - <code>shouldComponentUpdate</code> optimization is enabled.</li>
             <li><strong>Spec Tests</strong> - Internal specification tests.</li>
           </ul>
