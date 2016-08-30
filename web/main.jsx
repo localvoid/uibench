@@ -135,6 +135,7 @@ function generateHtmlReport(results) {
           </ul>
           <h4>Notes:</h4>
           <ul>
+            <li>Time is measured in microseconds.</li>
             <li><u>JS Init Time</u> is hugely depends on scripts downloading time, run benchmark multiple times to make sure
               that scripts are available in a browser cache.</li>
             <li>Don't use <u>Overall Tests Time</u> row to make any conclusions, like library X is N times faster than
@@ -156,8 +157,8 @@ function generateHtmlReport(results) {
             <li><u>JS Init Time</u> - js initialization time.</li>
             <li><u>First Render Time</u> - time to execute <code>table/[100,4]/render</code> for the first time, it will
               be executed before any spec/scu/recycling tests, so it may be considered as a "cold" run.</li>
-            <li><code>table/[100,4]/render</code> - render table with 100 rows and 4 columns.</li>
-            <li><code>table/[100,4]/removeAll</code> - remove all rows from a table with 100 rows and 4 columns.</li>
+            <li><code>table/[100,4]/render</code> - render table with 100 rows and 1+4 columns.</li>
+            <li><code>table/[100,4]/removeAll</code> - remove all rows from a table with 100 rows and 1+4 columns.</li>
             <li><code>table/[100,4]/sort/0</code> - sort rows in alphabetic order by first column.</li>
             <li><code>table/[100,4]/filter/32</code> - remove each 32th row.</li>
             <li><code>table/[100,4]/activate/32</code> - activate each 32th row (adds "active" class to each activated row).</li>
@@ -172,7 +173,7 @@ function generateHtmlReport(results) {
             <li><code>tree/[50,10]/[moveFromEndToStart(1)]</code> - move one top-level node from the end to the beginning.</li>
             <li><code>tree/[50,10]/[moveFromStartToEnd(1)]</code> - move one top-level node from the beginning to the end.</li>
             <li><code>tree/[50,10]/[*_worst_case]</code> - special test cases that should trigger worst case scenarios for
-              children reconcilliation algorithms in different libraries.</li>
+              children reconciliation algorithms in different libraries.</li>
             <li><code>tree/[10,10,10,10]/no_change</code> - trigger update without any changes.</li>
           </ul>
           <table class="table table-condensed">
@@ -479,6 +480,7 @@ class ResultsTable extends React.Component {
           </ul>
           <h4>Notes:</h4>
           <ul>
+            <li>Time is measured in microseconds.</li>
             <li><u>JS Init Time</u> is hugely depends on scripts downloading time, run benchmark multiple times to make sure
               that scripts are available in a browser cache.</li>
             <li>Don't use <u>Overall Tests Time</u> row to make any conclusions, like library X is N times faster than
@@ -500,8 +502,8 @@ class ResultsTable extends React.Component {
             <li><u>JS Init Time</u> - js initialization time.</li>
             <li><u>First Render Time</u> - time to execute <code>table/[100,4]/render</code> for the first time, it will
               be executed before any spec/scu/recycling tests, so it may be considered as a "cold" run.</li>
-            <li><code>table/[100,4]/render</code> - render table with 100 rows and 4 columns.</li>
-            <li><code>table/[100,4]/removeAll</code> - remove all rows from a table with 100 rows and 4 columns.</li>
+            <li><code>table/[100,4]/render</code> - render table with 100 rows and 1+4 columns.</li>
+            <li><code>table/[100,4]/removeAll</code> - remove all rows from a table with 100 rows and 1+4 columns.</li>
             <li><code>table/[100,4]/sort/0</code> - sort rows in alphabetic order by first column.</li>
             <li><code>table/[100,4]/filter/32</code> - remove each 32th row.</li>
             <li><code>table/[100,4]/activate/32</code> - activate each 32th row (adds "active" class to each activated row).</li>
@@ -516,7 +518,7 @@ class ResultsTable extends React.Component {
             <li><code>tree/[50,10]/[moveFromEndToStart(1)]</code> - move one top-level node from the end to the beginning.</li>
             <li><code>tree/[50,10]/[moveFromStartToEnd(1)]</code> - move one top-level node from the beginning to the end.</li>
             <li><code>tree/[50,10]/[*_worst_case]</code> - special test cases that should trigger worst case scenarios for
-              children reconcilliation algorithms in different libraries.</li>
+              children reconciliation algorithms in different libraries.</li>
             <li><code>tree/[10,10,10,10]/no_change</code> - trigger update without any changes.</li>
           </ul>
           <div className="input-group">
@@ -716,12 +718,6 @@ const state = {
       'url': 'https://github.com/maxogden/yo-yo',
       'benchmarkUrl': 'https://localvoid.github.io/uibench-yo-yo/',
       'comments': 'Real DOM diff/patch (`morphdom` library). Benchmark implementation doesn\'t support sCU optimization, doesn\'t have components/thunks overhead.',
-    },
-    {
-      'name': 'yo-yo [nokeys]',
-      'url': 'https://github.com/maxogden/yo-yo',
-      'benchmarkUrl': 'https://localvoid.github.io/uibench-yo-yo/nokeys.html',
-      'comments': 'Real DOM diff/patch (`morphdom` library). Benchmark implementation doesn\'t support sCU optimization, doesn\'t have components/thunks overhead, doesn\'t use keys to preserve internal state.',
     },
     {
       'name': 'Snabbdom',
