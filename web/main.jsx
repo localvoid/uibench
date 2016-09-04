@@ -738,6 +738,12 @@ const state = {
       'comments': 'Virtual DOM.',
     },
     {
+      'name': 'DIO.js',
+      'url': 'https://github.com/thysultan/dio.js',
+      'benchmarkUrl': 'https://thysultan.com/examples/benchmark-uibench.html',
+      'comments': 'Virtual DOM.',
+    },
+    {
       'name': 'Inferno',
       'url': 'https://github.com/trueadm/inferno',
       'benchmarkUrl': 'https://trueadm.github.io/uibench-inferno/',
