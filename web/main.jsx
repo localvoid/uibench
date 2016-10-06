@@ -746,8 +746,8 @@ const state = {
     {
       'name': 'Inferno',
       'url': 'https://github.com/trueadm/inferno',
-      'benchmarkUrl': 'https://trueadm.github.io/uibench-inferno/',
-      'versions': ['0.7'],
+      'benchmarkUrl': 'https://infernojs.github.io/uibench-inferno/',
+      'versions': ['0.7', '1.0'],
       'page': 'index.html',
       'comments': 'Virtual DOM. Using DOM Nodes recycling by default.',
     },
