@@ -752,6 +752,13 @@ const state = {
       'comments': 'Virtual DOM. Using DOM Nodes recycling by default.',
     },
     {
+      'name': '$mol',
+      'url': 'https://github.com/eigenmethod/mol',
+      'benchmarkUrl': 'https://eigenmethod.github.io/mol/perf/uibench/',
+      'page': 'index.html',
+      'comments': 'Real DOM. Components recycling.',
+    },
+    {
       'name': 'Vanilla [innerHTML]',
       'url': 'https://github.com/localvoid/uibench-vanilla',
       'benchmarkUrl': 'https://localvoid.github.io/uibench-vanilla/innerhtml.html',
