@@ -759,6 +759,13 @@ const state = {
       'comments': 'Real DOM. Components recycling.',
     },
     {
+      'name': 'Arcade',
+      'url': 'https://github.com/edge/arcade',
+      'benchmarkUrl': 'https://edge.github.io/arcade/bench/',
+      'page': 'index.html',
+      'comments': 'Asynchronous Rendering disabled.'
+    },
+    {
       'name': 'Vanilla [innerHTML]',
       'url': 'https://github.com/localvoid/uibench-vanilla',
       'benchmarkUrl': 'https://localvoid.github.io/uibench-vanilla/innerhtml.html',
