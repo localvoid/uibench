@@ -762,6 +762,7 @@ const state = {
       'name': 'Arcade',
       'url': 'https://github.com/edge/arcade',
       'benchmarkUrl': 'https://edge.github.io/arcade/bench/',
+      'versions': ['index', 'no-jsx'],
       'page': 'index.html',
       'comments': 'Asynchronous Rendering disabled.'
     },
