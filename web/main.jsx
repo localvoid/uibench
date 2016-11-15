@@ -767,6 +767,13 @@ const state = {
       'comments': 'Asynchronous Rendering disabled.'
     },
     {
+      'name': 'ivi',
+      'url': 'https://github.com/ivijs/ivi',
+      'benchmarkUrl': 'https://ivijs.github.io/examples/benchmarks/uibench/',
+      'page': 'index.html',
+      'comments': 'Virtual DOM.',
+    },
+    {
       'name': 'Vanilla [innerHTML]',
       'url': 'https://github.com/localvoid/uibench-vanilla',
       'benchmarkUrl': 'https://localvoid.github.io/uibench-vanilla/innerhtml.html',
