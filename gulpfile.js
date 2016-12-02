@@ -12,7 +12,7 @@ const WPConfig = {
     loaders: [{
       test: /\.jsx?$/,
       exclude: /(node_modules)/,
-      loaders: ['babel?{ "presets": ["es2015-loose", "react"], "plugins": ["transform-react-inline-elements"] }']
+      loaders: ['babel?{ "presets": [["es2015", {"loose": true}], "react"], "plugins": ["transform-react-inline-elements"] }']
     }]
   },
 };
