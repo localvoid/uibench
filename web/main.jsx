@@ -654,14 +654,6 @@ const state = {
       'comments': 'Virtual DOM. Benchmark implementation doesn\'t support sCU optimization. Compiled with: es2015-loose, transform-react-inline-elements.',
     },
     {
-      'name': 'React [Pure Components]',
-      'url': 'https://facebook.github.io/react/',
-      'benchmarkUrl': 'https://localvoid.github.io/uibench-react/',
-      'versions': ['15'],
-      'page': 'pc.html',
-      'comments': 'Virtual DOM. Components extended from `React.PureComponent`. Compiled with: es2015-loose, transform-react-inline-elements.',
-    },
-    {
       'name': 'Bobril',
       'url': 'https://github.com/Bobris/Bobril',
       'benchmarkUrl': 'https://bobris.github.io/uibench-bobril/',
@@ -674,34 +666,10 @@ const state = {
       'comments': 'Virtual DOM. Benchmark is implemented in exactly the same way as React implementation.',
     },
     {
-      'name': 'React-lite',
-      'url': 'https://github.com/Lucifier129/react-lite',
-      'benchmarkUrl': 'https://localvoid.github.io/uibench-react-lite/',
-      'comments': 'Virtual DOM. Benchmark is implemented in exactly the same way as React implementation',
-    },
-    {
       'name': 'Imba',
       'url': 'https://github.com/somebee/imba',
       'benchmarkUrl': 'https://somebee.github.io/uibench-imba/',
       'comments': 'Programming language with UI library that has Virtual DOM like API. Using DOM Nodes recycling by default.',
-    },
-    {
-      'name': 'yo-yo',
-      'url': 'https://github.com/maxogden/yo-yo',
-      'benchmarkUrl': 'https://localvoid.github.io/uibench-yo-yo/',
-      'comments': 'Real DOM diff/patch (`morphdom` library). Benchmark implementation doesn\'t support sCU optimization, doesn\'t have components/thunks overhead.',
-    },
-    {
-      'name': 'Snabbdom',
-      'url': 'https://github.com/paldepind/snabbdom',
-      'benchmarkUrl': 'https://localvoid.github.io/uibench-snabbdom/',
-      'comments': 'Virtual DOM.',
-    },
-    {
-      'name': 'Maquette',
-      'url': 'http://maquettejs.org/',
-      'benchmarkUrl': 'https://localvoid.github.io/uibench-maquette/',
-      'comments': 'Virtual DOM. Benchmark implementation doesn\'t support sCU optimization, doesn\'t have components/thunks overhead.',
     },
     {
       'name': 'Vidom',
@@ -724,9 +692,9 @@ const state = {
       'comments': 'Virtual DOM. Advanced optimizations.',
     },
     {
-      'name': 'Inferno (same code as React implementation)',
+      'name': 'Inferno [same code as React implementation]',
       'url': 'https://github.com/trueadm/inferno',
-      'benchmarkUrl': 'https://localvoid.github.io/uibench-inferno/',
+      'benchmarkUrl': 'https://infernojs.github.io/uibench-inferno/react-like/docs/',
       'comments': 'Virtual DOM. Benchmark is implemented in exactly the same way as React implementation.',
     },
     {
