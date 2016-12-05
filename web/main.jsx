@@ -665,19 +665,7 @@ const state = {
       'name': 'Bobril',
       'url': 'https://github.com/Bobris/Bobril',
       'benchmarkUrl': 'https://bobris.github.io/uibench-bobril/',
-      'comments': 'Virtual DOM.',
-    },
-    {
-      'name': 'Deku',
-      'url': 'https://github.com/dekujs/deku',
-      'benchmarkUrl': 'https://localvoid.github.io/uibench-deku/',
-      'comments': 'Virtual DOM. Benchmark implementation doesn\'t support sCU optimization, doesn\'t have components/thunks overhead.',
-    },
-    {
-      'name': 'Mercury',
-      'url': 'https://github.com/Raynos/mercury',
-      'benchmarkUrl': 'https://localvoid.github.io/uibench-mercury/',
-      'comments': 'Virtual DOM (`virtual-dom` library).',
+      'comments': 'Virtual DOM. Benchmark is implemented as close as possible to React implementation, preserves internal state, all components are stateful, no explicit event delegation, etc.',
     },
     {
       'name': 'Preact',
@@ -689,7 +677,7 @@ const state = {
       'name': 'React-lite',
       'url': 'https://github.com/Lucifier129/react-lite',
       'benchmarkUrl': 'https://localvoid.github.io/uibench-react-lite/',
-      'comments': 'Virtual DOM.',
+      'comments': 'Virtual DOM. Benchmark is implemented in exactly the same way as React implementation',
     },
     {
       'name': 'Imba',
@@ -719,7 +707,7 @@ const state = {
       'name': 'Vidom',
       'url': 'https://github.com/dfilatov/vidom',
       'benchmarkUrl': 'https://dfilatov.github.io/uibench-vidom/',
-      'comments': 'Virtual DOM.',
+      'comments': 'Virtual DOM. Benchmark is implemented as close as possible to React implementation, preserves internal state, all components are stateful, no explicit event delegation, etc.',
     },
     {
       'name': 'DIO.js',
@@ -761,7 +749,7 @@ const state = {
       'url': 'https://github.com/ivijs/ivi',
       'benchmarkUrl': 'https://ivijs.github.io/examples/benchmarks/uibench/',
       'page': 'index.html',
-      'comments': 'Virtual DOM.',
+      'comments': 'Virtual DOM. Benchmark is implemented as close as possible to React implementation, preserves internal state, all components are stateful, no explicit event delegation, etc.',
     },
     {
       'name': 'Vanilla [innerHTML]',
