@@ -680,8 +680,8 @@ const state = {
     {
       'name': 'DIO.js',
       'url': 'https://github.com/thysultan/dio.js',
-      'benchmarkUrl': 'https://thysultan.com/examples/benchmark-uibench.html',
-      'comments': 'Virtual DOM.',
+      'benchmarkUrl': 'https://dio.js.org/examples/benchmark-uibench-keyed.html',
+      'comments': 'Virtual DOM. Benchmark is implemented as close as possible to React implementation, preserves internal state, all components are stateful, no explicit event delegation, etc.',
     },
     {
       'name': 'Inferno',
