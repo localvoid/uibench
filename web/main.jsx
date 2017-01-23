@@ -687,7 +687,7 @@ const state = {
       'name': 'Inferno',
       'url': 'https://github.com/trueadm/inferno',
       'benchmarkUrl': 'https://infernojs.github.io/uibench-inferno/docs/',
-      'versions': ['0.7', '1.0'],
+      'versions': ['0.7', '1.0', '1.2'],
       'page': 'index.html',
       'comments': 'Virtual DOM. Advanced optimizations.',
     },
@@ -695,6 +695,8 @@ const state = {
       'name': 'Inferno [same code as React implementation]',
       'url': 'https://github.com/trueadm/inferno',
       'benchmarkUrl': 'https://infernojs.github.io/uibench-inferno/react-like/docs/',
+      'versions': ['1.2'],
+      'page': 'index.html',
       'comments': 'Virtual DOM. Benchmark is implemented in exactly the same way as React implementation.',
     },
     {
