@@ -2,10 +2,6 @@
 
 [Open](https://localvoid.github.io/uibench/)
 
-## Reports
-
-- [Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2837.0 Safari/537.36](https://cdn.rawgit.com/localvoid/6715c4b23eadc460112e671b4add3710/raw/907901966dd0473f1026d1ff25e244a022eb5ab1/uibench_results.html)
-
 ## Benchmark implementations query parameters
 
 ### i

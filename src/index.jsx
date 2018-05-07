@@ -1,13 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import uri from 'urijs';
-import d3 from 'd3';
+import { median as d3median, mean as d3mean, min as d3min, max as d3max } from 'd3-array';
+import { scaleLinear } from 'd3-scale';
 import { LchColor, lchToRgb, formatRgbToHex } from 'inkdrop';
 
 function stdev(items) {
-  const m = d3.mean(items);
+  const m = d3mean(items);
 
-  const variance = d3.mean(items.map((i) => {
+  const variance = d3mean(items.map((i) => {
     const diff = i - m;
     return diff * diff;
   }));
@@ -19,9 +20,9 @@ const GreenColor = formatRgbToHex(lchToRgb(new LchColor(0.9, 0.4, 140 / 360)));
 const RedColor = formatRgbToHex(lchToRgb(new LchColor(0.9, 0.4, 30 / 360)));
 
 function processResults(results) {
-  const min = d3.min(results);
-  const max = d3.max(results);
-  const scale = d3.scale.linear().domain([min, max]);
+  const min = d3min(results);
+  const max = d3max(results);
+  const scale = scaleLinear().domain([min, max]);
   const diff = results.map((r) => r === min ? 0 : r / min);
   const colors = results.map((r) => r === min ?
     GreenColor :
@@ -90,11 +91,11 @@ function generateHtmlReport(results) {
 
       return {
         sampleCount: samples.length,
-        median: d3.median(samples),
-        mean: d3.mean(samples),
+        median: d3median(samples),
+        mean: d3mean(samples),
         stdev: stdev(samples),
-        min: d3.min(samples),
-        max: d3.max(samples),
+        min: d3min(samples),
+        max: d3max(samples),
       };
     });
 
@@ -241,7 +242,7 @@ class Header extends React.Component {
             columns to the same table where each 32th item is removed. Details about all test cases can be found inside
             the <a href="https://github.com/localvoid/uibench-base/blob/master/lib/uibench.ts#L317">uibench.js</a> file.</p>
           <p className="lead">
-            <a className="github-button" href="https://github.com/localvoid/uibench" data-style="mega" data-count-href="/localvoid/uibench/stargazers" data-count-api="/repos/localvoid/uibench#stargazers_count" data-count-aria-label="# stargazers on GitHub" aria-label="Star localvoid/uibench on GitHub">Star</a>
+            <a className="github-button" href="https://github.com/localvoid/uibench" data-size="large" data-count-href="/localvoid/uibench/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star localvoid/uibench on GitHub">Star</a>
           </p>
         </div>
       </div>
@@ -433,11 +434,11 @@ class ResultsTable extends React.Component {
 
         return {
           sampleCount: samples.length,
-          median: d3.median(samples),
-          mean: d3.mean(samples),
+          median: d3median(samples),
+          mean: d3mean(samples),
           stdev: stdev(samples),
-          min: d3.min(samples),
-          max: d3.max(samples),
+          min: d3min(samples),
+          max: d3max(samples),
         };
       });
 
@@ -553,7 +554,7 @@ class Main extends React.Component {
     super(props);
     this.state = {
       fullRenderTime: false,
-      disableSCU: false,
+      disableSCU: true,
       enableDOMRecycling: false,
       mobileMode: false,
       iterations: 5,
@@ -601,19 +602,19 @@ class Main extends React.Component {
             <div className="panel-body">
               <div className="checkbox">
                 <label>
-                  <input type="checkbox" value={this.state.fullRenderTime} onChange={this.onFullRenderTimeChange} />
+                  <input type="checkbox" checked={this.state.fullRenderTime} onChange={this.onFullRenderTimeChange} />
                   Enable full render time measurements (recalc style/layout/paint/composition/etc)
                 </label>
               </div>
               <div className="checkbox">
                 <label>
-                  <input type="checkbox" value={this.state.disableSCU} onChange={this.onDisableSCUChange} />
+                  <input type="checkbox" checked={this.state.disableSCU} onChange={this.onDisableSCUChange} />
                   Disable <code>shouldComponentUpdate</code> optimization
                 </label>
               </div>
               <div className="checkbox">
                 <label>
-                  <input type="checkbox" value={this.state.mobileMode} onChange={this.onMobileModeChange} />
+                  <input type="checkbox" checked={this.state.mobileMode} onChange={this.onMobileModeChange} />
                   Mobile mode (reduces number of DOM elements in tests)
                 </label>
               </div>
@@ -679,7 +680,7 @@ const state = {
       'name': 'Inferno',
       'url': 'https://github.com/trueadm/inferno',
       'benchmarkUrl': 'https://infernojs.github.io/uibench-inferno/docs/',
-      'versions': ['1.0', '1.2', '1.3', '3.0'],
+      'versions': ['1.0', '1.2', '1.3', '3.0', '4.0'],
       'page': 'index.html',
       'comments': 'Virtual DOM. Advanced optimizations.',
     },
@@ -687,7 +688,7 @@ const state = {
       'name': 'Inferno [same code as React implementation]',
       'url': 'https://github.com/trueadm/inferno',
       'benchmarkUrl': 'https://infernojs.github.io/uibench-inferno/react-like/docs/',
-      'versions': ['1.2', '1.3', '3.0'],
+      'versions': ['1.2', '1.3', '3.0', '4.0'],
       'page': 'index.html',
       'comments': 'Virtual DOM. Benchmark is implemented in exactly the same way as React implementation.',
     },
@@ -697,14 +698,6 @@ const state = {
       'benchmarkUrl': 'https://eigenmethod.github.io/mol/perf/uibench/',
       'page': 'index.html',
       'comments': 'Real DOM. Components recycling.',
-    },
-    {
-      'name': 'Arcade',
-      'url': 'https://github.com/edge/arcade',
-      'benchmarkUrl': 'https://edge.github.io/arcade/bench/',
-      'versions': ['index', 'no-jsx'],
-      'page': 'index.html',
-      'comments': 'Asynchronous Rendering disabled.'
     },
     {
       'name': 'ivi',
