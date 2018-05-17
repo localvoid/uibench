@@ -701,8 +701,8 @@ const state = {
     },
     {
       'name': 'ivi',
-      'url': 'https://github.com/ivijs/ivi',
-      'benchmarkUrl': 'https://ivijs.github.io/examples/benchmarks/uibench/',
+      'url': 'https://github.com/localvoid/ivi',
+      'benchmarkUrl': 'https://localvoid.github.io/ivi-examples/benchmarks/uibench/',
       'page': 'index.html',
       'comments': 'Virtual DOM. Benchmark is implemented as close as possible to React implementation, preserves internal state, all components are stateful, no explicit event delegation, etc.',
     },
