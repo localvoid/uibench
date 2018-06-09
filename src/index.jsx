@@ -710,7 +710,13 @@ const state = {
       'name': 'Vanilla [innerHTML]',
       'url': 'https://github.com/localvoid/uibench-vanilla',
       'benchmarkUrl': 'https://localvoid.github.io/uibench-vanilla/innerhtml.html',
-      'comments': 'Benchmark implementation doesn\'t preserve internal state, doesn\'t support sCU optimization, doesn\'t have components/thunks overhead.',
+      'comments': 'Benchmark implementation doesn\'t preserve internal state, doesn\'t support sCU optimization, doesn\'t have components overhead.',
+    },
+    {
+      'name': 'Vanilla [WebComponent]',
+      'url': 'https://github.com/localvoid/uibench-vanilla-wc',
+      'benchmarkUrl': 'https://localvoid.github.io/uibench-vanilla-wc/',
+      'comments': 'Benchmark implementation doesn\'t preserve internal state, doesn\'t support sCU optimization.',
     }
   ],
   results: new Results()
