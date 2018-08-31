@@ -717,6 +717,12 @@ const state = {
       'url': 'https://github.com/localvoid/uibench-vanilla-wc',
       'benchmarkUrl': 'https://localvoid.github.io/uibench-vanilla-wc/',
       'comments': 'Benchmark implementation doesn\'t preserve internal state, doesn\'t support sCU optimization.',
+    },
+    {
+      'name': 'Vanilla [stage0]',
+      'url': 'https://github.com/Freak613/stage0',
+      'benchmarkUrl': 'https://freak613.github.io/stage0/examples/uibench/',
+      'comments': 'Real DOM.',
     }
   ],
   results: new Results()
