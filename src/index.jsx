@@ -677,15 +677,15 @@ const state = {
       'comments': 'Virtual DOM. Benchmark is implemented as close as possible to React implementation, preserves internal state, all components are stateful, no explicit event delegation, etc.',
     },
     {
-      'name': 'Inferno',
+      'name': 'Inferno [optimized]',
       'url': 'https://github.com/trueadm/inferno',
       'benchmarkUrl': 'https://infernojs.github.io/uibench-inferno/docs/',
       'versions': ['1.0', '1.2', '1.3', '3.0', '4.0'],
       'page': 'index.html',
-      'comments': 'Virtual DOM. Advanced optimizations.',
+      'comments': 'Virtual DOM. Optimized.',
     },
     {
-      'name': 'Inferno [same code as React implementation]',
+      'name': 'Inferno',
       'url': 'https://github.com/trueadm/inferno',
       'benchmarkUrl': 'https://infernojs.github.io/uibench-inferno/react-like/docs/',
       'versions': ['1.2', '1.3', '3.0', '4.0'],
@@ -697,7 +697,14 @@ const state = {
       'url': 'https://github.com/eigenmethod/mol',
       'benchmarkUrl': 'https://eigenmethod.github.io/mol/perf/uibench/',
       'page': 'index.html',
-      'comments': 'Real DOM. Components recycling.',
+      'comments': 'Fine-grained data bindings. Components recycling.',
+    },
+    {
+      'name': 'ivi [optimized]',
+      'url': 'https://github.com/localvoid/ivi',
+      'benchmarkUrl': 'https://localvoid.github.io/ivi-examples/benchmarks/uibench_fc/',
+      'page': 'index.html',
+      'comments': 'Virtual DOM. Optimized.',
     },
     {
       'name': 'ivi',
@@ -705,6 +712,12 @@ const state = {
       'benchmarkUrl': 'https://localvoid.github.io/ivi-examples/benchmarks/uibench/',
       'page': 'index.html',
       'comments': 'Virtual DOM. Benchmark is implemented as close as possible to React implementation, preserves internal state, all components are stateful, no explicit event delegation, etc.',
+    },
+    {
+      'name': 'stage0',
+      'url': 'https://github.com/Freak613/stage0',
+      'benchmarkUrl': 'https://freak613.github.io/stage0/examples/uibench/',
+      'comments': 'Optimized "Vanilla" implementation that uses helper functions from stage0 library. Preserves internal state, doesn\'t support sCU optimization, doesn\'t have components overhead.',
     },
     {
       'name': 'Vanilla [innerHTML]',
@@ -718,12 +731,6 @@ const state = {
       'benchmarkUrl': 'https://localvoid.github.io/uibench-vanilla-wc/',
       'comments': 'Benchmark implementation doesn\'t preserve internal state, doesn\'t support sCU optimization.',
     },
-    {
-      'name': 'Vanilla [stage0]',
-      'url': 'https://github.com/Freak613/stage0',
-      'benchmarkUrl': 'https://freak613.github.io/stage0/examples/uibench/',
-      'comments': 'Real DOM.',
-    }
   ],
   results: new Results()
 };
