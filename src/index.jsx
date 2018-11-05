@@ -698,18 +698,11 @@ const state = {
       'comments': 'Fine-grained data bindings. Components recycling.',
     },
     {
-      'name': 'ivi [optimized]',
-      'url': 'https://github.com/localvoid/ivi',
-      'benchmarkUrl': 'https://localvoid.github.io/ivi-examples/benchmarks/uibench_fc/',
-      'page': 'index.html',
-      'comments': 'Virtual DOM. Optimized.',
-    },
-    {
       'name': 'ivi',
       'url': 'https://github.com/localvoid/ivi',
       'benchmarkUrl': 'https://localvoid.github.io/ivi-examples/benchmarks/uibench/',
       'page': 'index.html',
-      'comments': 'Virtual DOM. Benchmark is implemented as close as possible to React implementation, preserves internal state, all components are stateful, no explicit event delegation, etc.',
+      'comments': 'Virtual DOM. Preserves internal state, no explicit event delegation, etc.',
     },
     {
       'name': 'stage0',
