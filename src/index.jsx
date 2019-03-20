@@ -711,6 +711,13 @@ const state = {
       'comments': 'Optimized "Vanilla" implementation that uses helper functions from stage0 library. Preserves internal state, doesn\'t support sCU optimization, doesn\'t have components overhead.',
     },
     {
+      'name': 'Solid',
+      'url': 'https://github.com/ryansolid/solid',
+      'benchmarkUrl': 'https://ryansolid.github.io/solid-uibench/',
+      'page': 'index.html',
+      'comments': 'Fine-grained data bindings. Preserves internal state, no explicit event delegation, etc.',
+    },
+    {
       'name': 'Vanilla [innerHTML]',
       'url': 'https://github.com/localvoid/uibench-vanilla',
       'benchmarkUrl': 'https://localvoid.github.io/uibench-vanilla/innerhtml.html',
